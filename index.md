@@ -5,6 +5,5 @@ tagline: Development at its finest
 ---
 {% include JB/setup %}
 
-## Woot!!
-
-Nothing to see here... yet!
+## A work in progress. 
+Right now most of my free time is going into starting [Defektive Devlopment](http://defektivedevelopment.github.io). Check it out.
