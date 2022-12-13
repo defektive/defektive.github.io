@@ -1,0 +1,3 @@
+var relearn_search_index=[{content:`sdf
+`,description:"",tags:null,title:"How To",uri:"/how_to/index.html"},{content:"",description:"",tags:null,title:"Use Yubikey With KeyPassXC",uri:"/how_to/use-yubikey-with-keypassxc/index.html"},{content:`sdfc
+`,description:"",tags:null,title:"Use AWS Credentials Stored in KeePassXC",uri:"/how_to/use-aws-credentials-stored-in-keepassxc/index.html"},{content:"",description:"",tags:null,title:"Categories",uri:"/categories/index.html"},{content:"",description:"",tags:null,title:"Tags",uri:"/tags/index.html"}]
