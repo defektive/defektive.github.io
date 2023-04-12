@@ -16,7 +16,7 @@ baseURL = "https://defektive.github.io"
 canonifyURLs = true # true -> all relative URLs would instead be canonicalized using baseURL
 relativeURLs = true # true -> rewrite all relative URLs to be relative to the current content
 uglyURLs = false     # true -> basic/index.html -> basic.html
-theme = "hugo-theme-relearn"
+theme = "McShelby-hugo-theme-relearn-git"
 
 languageCode = "en"
 defaultContentLanguage = "en"
@@ -97,19 +97,23 @@ disableHugoGeneratorInject = true
 # consult this documentation for explaination
 [params]
   editURL = "https://github.com/defektive/defektive.github.io/edit/master/content/"
-  description = "Documentation for Hugo Relearn Theme"
-  author = "Defektive"
-  showVisitedLinks = true
+  description = "Documentation for things I'll probably forget"
+  author = "defektive"
+  showVisitedLinks = false
   collapsibleMenu = true
   disableBreadcrumb = false
-  disableInlineCopyToClipBoard = true
+  disableInlineCopyToClipBoard = false
   disableNextPrev = false
   disableLandingPageButton = false
   titleSeparator = "::"
-  themeVariant = [ "relearn-light", "relearn-dark", "learn", "neon", "blue", "green", "red" ]
   disableSeoHiddenPages = true
   # this is for the stylesheet generator to allow for interactivity in Mermaid
   # graphs; you usually will not need it and you should remove this for
   # security reasons
   mermaidInitialize = "{ \"securityLevel\": \"loose\" }"
   additionalContentLanguage = [ "en" ]
+
+  themeVariant = [ "auto", "relearn-bright", "relearn-light", "relearn-dark", "learn", "neon", "blue", "green", "red" ]
+  themeVariantAuto = [ "relearn-light", "relearn-dark" ]
+
+  mermaidZoom = true
