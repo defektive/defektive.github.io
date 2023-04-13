@@ -1,6 +1,6 @@
 +++
 title = "Reconfigure Modlishka With MFA Authentication Provider"
-weight = 70
+weight = 75
 +++
 
 Let's go through the auth flow to determine what the username and password fields when conducting a normal login.

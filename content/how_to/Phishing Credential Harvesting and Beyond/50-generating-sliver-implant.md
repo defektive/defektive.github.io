@@ -32,7 +32,7 @@ mtls
 In a new terminal window:
 
 ```bash
-wine ~/Desktop/
+wine ~/Desktop/op/sliver/implants/default-sliver.exe
 ```
 ![Sliver Implant Test](/static/how-to-phishing/sliver-implant-test.png)
 
