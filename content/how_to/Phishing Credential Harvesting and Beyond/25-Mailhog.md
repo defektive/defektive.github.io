@@ -16,8 +16,6 @@ services:
       - VIRTUAL_HOST=mailhog.docker
     logging:
       driver: 'none'  # disable saving logs
-    ports:
-      - "127.0.0.1:8025:8025"
 
 ```
 
@@ -28,4 +26,6 @@ cd ~/Desktop/op/docker/
 sudo docker-compose up
 ```
 
-Let's open up the web interface now [http://localhost:8025](http://localhost:8025).
+Let's open up the web interface now [http://mailhog.docker:8025/](http://mailhog.docker:8025/).
+
+![Mailhog Landing Page](/static/how-to-phishing/mailhog-first-setup.png)
