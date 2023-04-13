@@ -41,24 +41,46 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 
 I also installed VS Code (https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64)
 
+In an effort to make things more clear and easier to understand while we hop through browser tabs and URLS, we'll want to setup some DNS magic for our docker conainters. This requires us to replace the default `systemd-resolved` in Ubuntu with `dnsmasq`. Then we'll use a program to populate `dnsmasq` configs with docker container information. This step is only for local testing.
 
-#### Clone Repo for future reference
+This [article](https://computingforgeeks.com/install-and-configure-dnsmasq-on-ubuntu/) came in handy to switch to `dnsmasq`. In addition to that article, we'll also need to add the following to the `dnsmasq.conf`
 
-```bash
-mkdir ~/opt/
-cd ~/opt/
-git clone replaceme
-cd repolaceme/docker/
-``` 
 
-#### Ensuring it all works
-
-```bash
-sudo docker compose up
+```conf
+conf-dir=/etc/dnsmasq.d
 ```
 
-Open the Gophish admin interface [https://localhost:3333/](https://localhost:3333/).
+Now we need to install Golang so we can build [docker-dnsmaq](https://github.com/defektive/docker-dnsmasq).
+
+```bash
+sudo apt install golang
+go install github.com/defektive/docker-dnsmasq@latest
+```
+
+Now we should be able to run this in a new terminal window:
+
+```bash
+sudo ~/go/bin/docker-dnsmasq daemon
+```
+
+We can test everything is working properly by starting a container with the `VIRTUAL_HOST` environment variable. Then pinging that docker container `VIRTUAL_HOST` name.
+
+```bash
+ping mailhog.docker
+```
+
+![Ping Docker Container](/static/how-to-phishing/ping-docker-container.png)
+
+We should also be able to ping random subdomains:
+
+```bash
+ping asdasd.mailhog.docker
+```
+
+![Ping Docker Container Subdomain](/static/how-to-phishing/ping-docker-container-subdomain.png)
 
 ### Windows VM
 
 We'll want a Windows box to do a little bit of payload development and testing. Once windows is installed, we'll need to install [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/). When configuring visual studio select *.NET Development*.
+
+TODO: Screenshots

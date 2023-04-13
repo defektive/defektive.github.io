@@ -46,14 +46,8 @@ Now we can add gophish to our docker-compose services.
     container_name: "gophish"
     environment:
       - VIRTUAL_HOST=gophish.docker
-    ports:
-      - "127.0.0.1:3333:3333"
-      - "127.0.0.2:80:80"
-      - "127.0.0.2:443:443"
-
     links:
       - "mailhog"
-
     volumes:
       - "gophish:/opt/gophish"
       - "./gophish/config.json:/opt/gophish/config.json"
@@ -68,7 +62,6 @@ volumes:
 We should be able to brind up docker compose now:
 
 ```bash
-cd ~/Desktop/op/docker
 sudo docker compose up
 ```
 
@@ -79,9 +72,11 @@ cd ~/Desktop/op/docker
 sudo docker compose logs gophish | grep " password "
 ```
 
-- Open https://localhost:3333/
-- login with admin and the password you found in the logs
-- change password
+![Gophish Initial Password](/static/how-to-phishing//gophish-initial-password.png)
+
+- Open [http://gophish.docker:3333/](http://gophish.docker:3333/).
+- login with the user `admin` and the password you found in the logs.
+- change password (I used `gophishpass` for the VM).
 
 * * *
 
@@ -89,8 +84,20 @@ sudo docker compose logs gophish | grep " password "
 
 Go to `Sending Profiles` > `+ New Sending Profile`.
 
+- Set **Name** to `Mailhog SMTP Testing Server`.
+- Set **SMTP From** to an email, I used `admin@phishing.test`.
+- Set **Host** to `mailhog:1025`, as this is the name of the linked container in the docker compose file.
+- Add a new Email Header `X-Mailer` and set it to `Outlook`. This overrides Gophish's default of `Gophish`.
+
 ![SMTP Settings](/static/how-to-phishing/gophish-mailhog-smtp.png)
 
-- `Send Test Email`
+- Click `Send Test Email`.
+- Fill out the fields with mostly random things.
+
+![Gophish Mailhog Send Test Email](/static/how-to-phishing/gophish-mailhog-smtp-test-email.png)
+
 - We should see a nice tesing email in mailhog
-- Click `Save`
+
+![Mailhog Gophish Test Email](mailhog-gophish-test-email.png)
+
+- Since everything is working, Click `Save` on the send profile.
