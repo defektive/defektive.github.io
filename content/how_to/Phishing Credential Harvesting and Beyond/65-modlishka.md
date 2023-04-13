@@ -24,7 +24,7 @@ Modlishka can take command line areguments or a config file. We are opting to us
 ```json
 {
   "proxyDomain": "modlishka.docker",
-  "target": "http://testphp.vulnweb.com/",
+  "target": "testphp.vulnweb.com",
   "trackingCookie": "iamadumbcookie",
   "trackingParam": "rid",
   "controlCreds": "phisherman:phisherpass",
@@ -70,10 +70,9 @@ Now we can add Modlishka to our docker compose services.
       - "./modlishka/modlishka-data:/data"
 ```
 
-Lets test it out.
+Lets test it out. Lets stop docker compose and restart it:
 
 ```bash
-cd ~/Desktop/op/docker
 sudo docker compose up
 ```
 

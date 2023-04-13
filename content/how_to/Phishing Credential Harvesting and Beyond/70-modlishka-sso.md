@@ -20,7 +20,7 @@ Add the follow for emails...
 ```sh
 # SMTP Host Emails are sent to
 AUTHENTIK_EMAIL__HOST=mailhog
-AUTHENTIK_EMAIL__PORT=25
+AUTHENTIK_EMAIL__PORT=1025
 # Optionally authenticate (don't add quotation marks to your password)
 AUTHENTIK_EMAIL__USERNAME=
 AUTHENTIK_EMAIL__PASSWORD=
@@ -36,7 +36,6 @@ AUTHENTIK_EMAIL__FROM=authentik@target.docker
 Now we'll merge their `docker-compose.yml` with ours ([ref](https://goauthentik.io/docs/installation/docker-compose)). We'll start with the services. 
 
 ```yml
-
 
   authentik-postgresql:
     image: docker.io/library/postgres:12-alpine
@@ -110,7 +109,7 @@ Now we'll merge their `docker-compose.yml` with ours ([ref](https://goauthentik.
       - ./authentik/custom-templates:/templates
     env_file:
       - .env
-...
+```
 
 We alse need to update our volumes:
 
@@ -123,12 +122,18 @@ volumes:
     driver: local
 ```
 
-
 Lets test it out.
 
 ```bash
-cd ~/Desktop/op/docker
 sudo docker compose up
 ```
 
 Now open [http://auth.target.docker:9000/if/flow/initial-setup/](http://auth.target.docker:9000/if/flow/initial-setup/). We should see a simple setup page.
+
+
+TODO: Screenshots
+
+Setup MFA
+
+TODO: Screenshots
+
