@@ -5,6 +5,12 @@ weight = 200
 
 > THIS IS A ROUGH OUTLINE OF WHAT NEEDS TO BE FINISHED
 
+### Terminate to implant download
+
+
+### Better implants (frostbyte bypass windows defender)
+
+
 ### Bot Detection Dev / Testing
 
 
