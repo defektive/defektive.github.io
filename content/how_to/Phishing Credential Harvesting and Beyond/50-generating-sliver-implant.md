@@ -13,9 +13,9 @@ cd ~/Desktop/op/sliver
 
 We should now be in a `sliver` shell.
 
-![SLicer Shell](/static/how-to-phishing/sliver-shell.png)
+![Sliver Shell](/static/how-to-phishing/sliver-shell.png)
 
-Now we can gernate a test implant:
+Now we can generate a test implant:
 
 ```bash
 generate --mtls 127.0.0.1 --save implants/default-sliver.exe

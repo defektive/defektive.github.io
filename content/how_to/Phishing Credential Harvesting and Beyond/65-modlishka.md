@@ -5,7 +5,7 @@ weight = 65
 
 ### Modlishka
 
-Modlishka is an amazing tool that can mirror a website on the fly, rewriting links to ensure the site functions. This allows us to essentially MitM connections to our targetted service from a domain we control.
+Modlishka is an amazing tool that can mirror a website on the fly, rewriting links to ensure the site functions. This allows us to essentially MitM connections to our targeted service from a domain we control.
 
 Lets get a checkout of Modlishka and get things setup to be run in docker.
 
@@ -19,7 +19,7 @@ cd Modlishka
 cp extra/docker/* .
 ```
 
-Modlishka can take command line areguments or a config file. We are opting to use the config file. Lets add the following to `~/Desktop/op/docker/modlishka/modlishka-data/config.json`
+Modlishka can take command line arguments or a configuration file. We are opting to use the configuration file. Lets add the following to `~/Desktop/op/docker/modlishka/modlishka-data/config.json`
 
 ```json
 {
@@ -53,7 +53,7 @@ Modlishka can take command line areguments or a config file. We are opting to us
 }
 ```
 
-The `trackingParam` value is what modlishka uses to determine what visits belong to what users, we'll map this to `rid` since that is what Gophish uses by default.
+The `trackingParam` value is what Modlishka uses to determine what visits belong to what users, we'll map this to `rid` since that is what Gophish uses by default.
 
 Now we can add Modlishka to our docker compose services.
 
@@ -76,6 +76,6 @@ Lets test it out. Lets stop docker compose and restart it:
 sudo docker compose up
 ```
 
-Now open [http://modlishka.docker/](http://modlishka.docker/). We should see the accunetix test site being hosted from our fake domain.
+Now open [http://modlishka.docker/](http://modlishka.docker/). We should see the Accunetix test site being hosted from our fake domain.
 
 ![Modlishka Accunetix Test Site](/static/how-to-phishing/modlishka-accunetix-test-site.png)

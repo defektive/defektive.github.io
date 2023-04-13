@@ -11,7 +11,7 @@ We'll be using a few different VMs through out this process. Let's kick off the 
 
 ### Op VM
 
-We need a place to deploy all our stuff. For this workshop, we'll be using VirtualBox and the latest Ubuntu LTS (22.04 LTS). [Ubuntu has a great walkthrough on how to do this](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview).
+We need a place to deploy all our stuff. For this workshop, we'll be using VirtualBox and the latest Ubuntu LTS (22.04 LTS). [Ubuntu has a great walk through on how to do this](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview).
 
 #### Install Tooling
 
@@ -41,7 +41,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 
 I also installed VS Code (https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64)
 
-In an effort to make things more clear and easier to understand while we hop through browser tabs and URLS, we'll want to setup some DNS magic for our docker conainters. This requires us to replace the default `systemd-resolved` in Ubuntu with `dnsmasq`. Then we'll use a program to populate `dnsmasq` configs with docker container information. This step is only for local testing.
+In an effort to make things more clear and easier to understand while we hop through browser tabs and URLS, we'll want to setup some DNS magic for our docker containers. This requires us to replace the default `systemd-resolved` in Ubuntu with `dnsmasq`. Then we'll use a program to populate `dnsmasq` configuration with docker container information. This step is only for local testing.
 
 This [article](https://computingforgeeks.com/install-and-configure-dnsmasq-on-ubuntu/) came in handy to switch to `dnsmasq`. In addition to that article, we'll also need to add the following to the `dnsmasq.conf`
 

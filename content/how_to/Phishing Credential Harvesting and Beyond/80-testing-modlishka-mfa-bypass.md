@@ -4,34 +4,34 @@ weight = 80
 +++
 
 
-Open up a new private browsing window, then visit [http://auth.target.docker:9000/?rid=test0001](http://auth.target.docker:9000/?rid=test0001). We'll make up a fake `rid` value to help us track our progress.
+Open up a new private browsing window, then visit [http://modlishka.docker/?rid=test0001](http://modlishka.docker/?rid=test0001). We'll make up a fake `rid` value to help us track our progress.
 
-TODO: Screenshots
+![Modlishka MFA Login](/static/how-to-phishing/modlishka-mfa-landing.png)
 
-Lets go through the auth flow.
+Lets go through the authentication flow. You can Modlishka seamlessly handles the redirects and the MFA authentication flow.
 
-TODO: Screenshots
+![Modlishka MFA Prompt](/static/how-to-phishing/modlishka-auth-mfa-prompt.png)
 
-and now MFA
+So we are stuck at a loading screen. this is because we hit the terminate trigger URL while loading a page. 
 
-TODO: Screenshots
+![Modlishka Authentication Loading](/static/how-to-phishing/modlishka-auth-success-loader.png)
 
-So we are stuck at a loading screen. this is because we hit the terminate trigger URL while loading a page. if we refresh the page we'll get redirected to our termination URL. Kind of jarring, but still acceptable.
+If we refresh the page we'll get redirected to our termination URL. Kind of jarring, but still acceptable.
 
 Now that we've completed our login, lets check out the Modlishka data. Open [http://modlishka.docker/livewell/](http://modlishka.docker/livewell/), login with the credentials we configured (`phisherman:phisherpass`).
 
-TODO: Screenshots
+![Modlishka Livewell](/static/how-to-phishing/modlishka-livewell.png)
 
 Lets click `View Cookies` on our testing UUID.
 
-TODO: Screenshots
+![Modlishka Livewell Authentication Cookie](/static/how-to-phishing/modlishka-livewell-auth-cookie.png)
 
-Now we can copy the value of the `authentik_session` cookie. Open [http://auth.target.docker:9000](http://auth.target.docker:9000) in a new private browsing window, and update the cookie value using dev tools.
+Now we can copy the value of the `authentik_session` cookie. Open [http://auth.target.docker:9000](http://auth.target.docker:9000) in a new private browsing window, and update the cookie value using developer tools.
 
-TODO: Screenshots
+![Replace Session Cookie to Current Session](/static/how-to-phishing/reuse-session-cookie.png)
 
-Once completed, Lets reload our page...
+Once completed, visit the root URL again [http://auth.target.docker:9000/](http://auth.target.docker:9000/)
 
-TODO: Screenshots.
+![Phished Admin Session](/static/how-to-phishing/phished-admin-session.png)
 
 We are now logged in as the target.
