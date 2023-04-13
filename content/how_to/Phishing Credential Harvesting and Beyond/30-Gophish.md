@@ -98,6 +98,6 @@ Go to `Sending Profiles` > `+ New Sending Profile`.
 
 - We should see a nice tesing email in mailhog
 
-![Mailhog Gophish Test Email](mailhog-gophish-test-email.png)
+![Mailhog Gophish Test Email](/static/how-to-phishing/mailhog-gophish-test-email.png)
 
 - Since everything is working, Click `Save` on the send profile.
