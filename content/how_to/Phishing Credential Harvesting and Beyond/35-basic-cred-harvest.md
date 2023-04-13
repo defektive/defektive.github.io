@@ -26,7 +26,6 @@ weight = 35
 
 ![Basic Credential HArvesting Campaign](/static/how-to-phishing/basic-cred-harvest-campaign.png)
 
-
 ### Test email in Mailhog
 
 - Open Mailhog
