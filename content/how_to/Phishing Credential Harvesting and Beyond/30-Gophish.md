@@ -5,7 +5,7 @@ weight = 30
 
 ### Gophish
 
-Let's create a file for our Gophish config:
+Let's create a file for our Gophish configuration:
 
 ```bash
 mkdir -p ~/Desktop/op/docker/gophish
@@ -38,7 +38,7 @@ touch ~/Desktop/op/docker/gophish/config.json
 }
 ```
 
-Now we can add gophish to our docker-compose services. 
+Now we can add Gophish to our docker-compose services. 
 
 ```yml
   gophish:
@@ -53,19 +53,19 @@ Now we can add gophish to our docker-compose services.
       - "./gophish/config.json:/opt/gophish/config.json"
 ```
 
-Finally we ne need to add a gophish named volume to the end:
+Finally we need to add a Gophish named volume to the end:
 ```yml
 volumes:
   gophish: 
 ```
 
-We should be able to brind up docker compose now:
+We should be able to bring up docker compose now:
 
 ```bash
 sudo docker compose up
 ```
 
-We need a password to login to gophish. Gophish automatically sets a password when you first start it. So lets open a new terminal and run the following.
+We need a password to login to Gophish. Gophish automatically sets a password when you first start it. So lets open a new terminal and run the following.
 
 ```bash
 cd ~/Desktop/op/docker
@@ -96,7 +96,7 @@ Go to `Sending Profiles` > `+ New Sending Profile`.
 
 ![Gophish Mailhog Send Test Email](/static/how-to-phishing/gophish-mailhog-smtp-test-email.png)
 
-- We should see a nice tesing email in mailhog
+- We should see a nice testing email in Mailhog
 
 ![Mailhog Gophish Test Email](/static/how-to-phishing/mailhog-gophish-test-email.png)
 

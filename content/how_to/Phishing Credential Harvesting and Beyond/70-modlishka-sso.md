@@ -4,7 +4,7 @@ weight = 70
 +++
 
 
-Now that we have Modlishka up and running. Let's get it configured with a target login provider. We'll use Authentik to get an okta like experience.
+Now that we have Modlishka up and running. Let's get it configured with a target login provider. We'll use Authentik to get an Okta like experience.
 
 ```bash
 sudo apt-get install -y pwgen
@@ -111,7 +111,7 @@ Now we'll merge their `docker-compose.yml` with ours ([ref](https://goauthentik.
       - .env
 ```
 
-We alse need to update our volumes:
+We also need to update our volumes:
 
 ```yml
 
@@ -130,10 +130,10 @@ sudo docker compose up
 
 Now open [http://auth.target.docker:9000/if/flow/initial-setup/](http://auth.target.docker:9000/if/flow/initial-setup/). We should see a simple setup page.
 
+![Authentik Admin Setup](/static/how-to-phishing/authentik-admin-setup.png)
 
-TODO: Screenshots
+## Setup MFA
 
-Setup MFA
+![Authentik Admin Add MFA](/static/how-to-phishing/authentik-admin-add-mfa.png)
 
-TODO: Screenshots
 

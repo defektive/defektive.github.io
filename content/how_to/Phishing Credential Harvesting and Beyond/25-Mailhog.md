@@ -3,7 +3,7 @@ title = "Mailhog"
 weight = 25
 +++
 
-Mailhog is an SMTP server used for testing various applications that send emails. It provides a simple web interface to view what messages have been sent. Let's edit our new `~/Desktop/op/docker/docker-compose.yml` file and add the folloinw to configure Mailhog.
+Mailhog is an SMTP server used for testing various applications that send emails. It provides a simple web interface to view what messages have been sent. Let's edit our new `~/Desktop/op/docker/docker-compose.yml` file and add the following to configure Mailhog.
 
 ```yml
 version: "3"

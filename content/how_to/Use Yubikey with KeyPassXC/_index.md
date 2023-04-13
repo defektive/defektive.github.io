@@ -1,5 +1,5 @@
 ---
-title: "Use Yubikey With KeyPassXC"
+title: "Use Yubikey With KeePassXC"
 date: 2022-12-11T20:46:37-07:00
 ---
 

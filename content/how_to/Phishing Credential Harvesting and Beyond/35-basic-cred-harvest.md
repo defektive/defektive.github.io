@@ -15,11 +15,11 @@ let s = document.getElementsByTagName('script'); while (s[0]) { s[0].parentNode.
 
 - right click web page > inspect element.
 - find top HTML tag.
-- right click > copy > outer html.
+- right click > copy > outer HTML.
 
 ![Copy Outer HTML](/static/how-to-phishing/basic-cred-harvest-landing-page-html-copy-outer-html.png)
 
-- paste html in landing page.
+- paste HTML in landing page.
 - check capture data.
 - check capture password.
 - set redirect to https://www.okta.com/404.html
@@ -82,5 +82,5 @@ HTML:
 ![First Email](/static/how-to-phishing/first-email.png)
 ![First Landing Page](/static/how-to-phishing/first-landing-page.png)
 
-- attempt to login with fake creds.
+- attempt to login with fake credentials.
 ![First Campaign Results](/static/how-to-phishing/first-campaign.png)

@@ -5,7 +5,7 @@ date: 2022-12-10T18:15:52-07:00
 
 ## Requirements
 
-- keepassxc
+- KeePassXC
 - aws-cli
 - secret-tool
 
@@ -23,7 +23,7 @@ This will be used so we can control what secrets get exposed to the FreeDesktop.
 Open KeePassXC Settings.
 
 1. Select Secret Service from the left hand side (it may be cut off).
-1. Check the **Enable KeepassXC Freedesktop.org Secret Service Integration**.
+1. Check the **Enable KeePassXC Freedesktop.org Secret Service Integration**.
 1. Click the pencil next to your kbdx file.
 
 ## Expose group to secret service

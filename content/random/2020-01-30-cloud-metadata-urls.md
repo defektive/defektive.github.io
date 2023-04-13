@@ -1,7 +1,7 @@
 ---
 date: "2020-01-30T16:20:01"
 title: Cloud metadata URLs
-tags: [ SSR, hacking, cloud metadata urls ]
+tags: [ SSRF, hacking, cloud metadata URLs ]
 ---
 
 ### Alibaba

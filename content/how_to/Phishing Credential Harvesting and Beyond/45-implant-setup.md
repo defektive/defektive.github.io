@@ -3,7 +3,7 @@ title = "Implant Setup With Sliver"
 weight = 45
 +++
 
-### Basic Payload Delvery: Sliver
+### Basic Payload Delivery: Sliver
 
 Sliver is an open source C2
 - https://github.com/BishopFox/sliver/wiki/Getting-Started
@@ -18,7 +18,7 @@ chmod +x ~/opt/sliver/sliver-server_linux
 
 ### Testing windows implants
 
-To test windows implants on linux, install wine (https://wiki.winehq.org/Ubuntu):
+To test windows implants on Linux, install wine (https://wiki.winehq.org/Ubuntu):
 
 ```bash
 sudo dpkg --add-architecture i386
@@ -34,6 +34,6 @@ Now a quick test in a terminal:
 wine cmd.exe
 ```
 
-You may get ome prompts to follow, you should follow them... Eventually you should get a nice `cmd.exe` prompt.
+You may get some prompts to follow, you should follow them... Eventually you should get a nice `cmd.exe` prompt.
 
 ![Wine CMD](/static/how-to-phishing/wine-cmd.png)

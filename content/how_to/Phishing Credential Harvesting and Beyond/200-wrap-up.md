@@ -24,7 +24,7 @@ Now we have a decent understanding of our current capabilities. How can we succe
 We need the following:
 
 - A domain to send emails from.
-- A domain to host malicous content. Could be the same, but it's nice have them separate in case one is burned.
+- A domain to host malicious content. Could be the same, but it's nice have them separate in case one is burned.
 - TLS Certs.
 - A target and their permission.
 
@@ -38,7 +38,7 @@ We like to use Amazon's Route53 for a number of reasons:
 
 ### Gophish: Sending Emails FRD
 
-Now we want to send real emails. We have quite a few options to do this. Our typical workflow is to use Amazon SES, but there are other options. Any service that supprts SMTP should work.
+Now we want to send real emails. We have quite a few options to do this. Our typical workflow is to use Amazon SES, but there are other options. Any service that supports SMTP should work.
 
 - SES
 - Gmail
