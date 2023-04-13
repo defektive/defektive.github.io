@@ -3,16 +3,17 @@ title = "Infrastructure"
 weight = 20
 +++
 
+
+We'll be using a few different VMs through out this process. Let's kick off the downloads now since they make take some time to complete.
+
+- [Ubuntu LTS](https://ubuntu.com/download/desktop/thank-you?version=22.04.2&architecture=amd64)
+- [Windows 10](https://www.microsoft.com/en-us/software-download/windows10ISO)
+
 ### Op VM
 
-We need a place to deploy all our stuff. For this workshop, we'll be using VirtualBox and the latest [Ubuntu LTS](https://ubuntu.com/download/desktop/thank-you?version=22.04.2&architecture=amd64) (22.04 LTS). [Ubuntu has a great walkthrough on how to do this](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview).
+We need a place to deploy all our stuff. For this workshop, we'll be using VirtualBox and the latest Ubuntu LTS (22.04 LTS). [Ubuntu has a great walkthrough on how to do this](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview).
 
-### Windows VM
-
-We'll want a Windows box to do a little bit of payload development and testing. I recommend downloading the latest ISO from https://www.microsoft.com/en-us/software-download/windows10ISO.
-
-
-### Ubuntu: Install Tooling
+#### Install Tooling
 
 We need a handful of tools to accomplish our goals
 
@@ -41,7 +42,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 I also installed VS Code (https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64)
 
 
-### Clone Repo for future reference
+#### Clone Repo for future reference
 
 ```bash
 mkdir ~/opt/
@@ -50,10 +51,14 @@ git clone replaceme
 cd repolaceme/docker/
 ``` 
 
-### Ensuring it all works
+#### Ensuring it all works
 
 ```bash
 sudo docker compose up
 ```
 
-open https://localhost:3333/
+Open the Gophish admin interface [https://localhost:3333/](https://localhost:3333/).
+
+### Windows VM
+
+We'll want a Windows box to do a little bit of payload development and testing. Once windows is installed, we'll need to install [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/). When configuring visual studio select *.NET Development*.
