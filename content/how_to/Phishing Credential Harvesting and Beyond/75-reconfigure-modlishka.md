@@ -40,10 +40,10 @@ Now we need to create some regular expressions to match the username and passwor
 ```bash
 echo -n '"uid_field":\s*"(.+?)"' | base64
 echo -n '"password":\s*"(.+?)"' | base64
-
-![](/static/how-to-phishing/modlishka-config-cred-params-base64.png)
-
 ```
+
+![Base64 Cred Params](/static/how-to-phishing/modlishka-config-cred-params-base64.png)
+
 We'll join these two values together with a comma, then update the `"credParams"` configuration value.
 
 ```json
