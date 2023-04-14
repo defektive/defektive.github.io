@@ -31,6 +31,6 @@ If we refresh the page we&amp;rsquo;ll get redirected to our termination URL.</d
 This will break Gophish&amp;rsquo;s Opened, Clicked, and Data Captured analytics. We can fix those later, but for now we&amp;rsquo;ll just keep moving forward.
 If we click on it we can see in our Modlishka livewell page, we can see our target&amp;rsquo;s RID.
 Feel free to go through the whole flow.</description></item><item><title>Wrap up</title><link>https://defektive.github.io/how_to/phishing-credential-harvesting-and-beyond/200-wrap-up/index.html</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/how_to/phishing-credential-harvesting-and-beyond/200-wrap-up/index.html</guid><description>THIS IS A ROUGH OUTLINE OF WHAT NEEDS TO BE FINISHED
-Terminate to implant download Better implants (frostbyte bypass windows defender) Bot Detection Dev / Testing Traefik Reverse Proxy What needs to change for live assessments Now we have a decent understanding of our current capabilities. How can we successfully execute this for reals?
-We need the following:
-A domain to send emails from. A domain to host malicious content.</description></item></channel></rss>
+Bypassing Email Filtering A lot of times emails will be quarentined based on content. We can trick them by injecting invisble characters and html elements into our messages.
+We can use a Zero Width Joiner ref to assist in this. simply pasting the character in the middle of problematic words should do the trick.
+We can also use the &amp;lt;span&amp;gt; HTML element to help us out by breaking up problematic words and phrases.</description></item></channel></rss>
