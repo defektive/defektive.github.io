@@ -86,8 +86,8 @@ Add some additional configuration to the modlishka container so Traefik can act 
 Now we can test it out.
 sudo docker compose up Now we can use our new traefik URL as our Gophish URL in a phishing campaign.
 `,description:"",tags:null,title:"Traefik Reverse Proxy",uri:"/how_to/phishing-credential-harvesting-and-beyond/95-traefik-reverse-proxy/index.html"},{content:`Better implants (frostbyte bypass windows defender) Instead of generating a executable. We can generate shellcode. We can then use something like https://github.com/pwn1sher/frostbyte to load that shellcode into memory and execute it.
-Lets get download the frostbyte zip from github.
-We need a .net binary with a .config file. Windows has lots of those, so lets find one.
+Lets get download the frostbyte zip from Github.
+We need a .net binary with a .exe.config file. Windows has lots of those in C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319.
 Lets conver our shell code.
 Update the code in ….
 build ….
