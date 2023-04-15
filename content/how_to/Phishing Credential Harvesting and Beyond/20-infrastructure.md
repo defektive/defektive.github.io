@@ -83,4 +83,12 @@ ping asdasd.mailhog.docker
 
 We'll want a Windows box to do a little bit of payload development and testing. Once windows is installed, we'll need to install [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/). When configuring visual studio select *.NET Development*.
 
-TODO: Screenshots
+https://learn.microsoft.com/en-us/dotnet/framework/install/dotnet-35-windows#enable-the-net-framework-35-in-control-panel
+
+### Change networking to bridged
+
+We need to change our VM's network settings to be bridge so they can talk to each other.
+
+### Install Guest Utils
+
+We should install virtualbox guest utils. This will make things much easier when we want to share things between our VMs.

