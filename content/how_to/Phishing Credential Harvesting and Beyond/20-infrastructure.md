@@ -66,6 +66,7 @@ sudo ~/go/bin/docker-dnsmasq daemon
 We can test everything is working properly by starting a container with the `VIRTUAL_HOST` environment variable. Then pinging that docker container `VIRTUAL_HOST` name.
 
 ```bash
+sudo docker run --rm -e VIRTUAL_HOST=mailhog.docker mailhog/mailhog
 ping mailhog.docker
 ```
 

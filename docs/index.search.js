@@ -12,7 +12,7 @@ This article came in handy to switch to dnsmasq. In addition to that article, we
 conf-dir=/etc/dnsmasq.d Now we need to install Golang so we can build docker-dnsmaq.
 sudo apt install golang go install github.com/defektive/docker-dnsmasq@latest Now we should be able to run this in a new terminal window:
 sudo ~/go/bin/docker-dnsmasq daemon We can test everything is working properly by starting a container with the VIRTUAL_HOST environment variable. Then pinging that docker container VIRTUAL_HOST name.
-ping mailhog.docker We should also be able to ping random subdomains:
+sudo docker run --rm -e VIRTUAL_HOST=mailhog.docker mailhog/mailhog ping mailhog.docker We should also be able to ping random subdomains:
 ping asdasd.mailhog.docker Windows VM We’ll want a Windows box to do a little bit of payload development and testing. Once windows is installed, we’ll need to install Visual Studio Community. When configuring visual studio select .NET Development.
 https://learn.microsoft.com/en-us/dotnet/framework/install/dotnet-35-windows#enable-the-net-framework-35-in-control-panel
 Change networking to bridged We need to change our VM’s network settings to be bridge so they can talk to each other.
