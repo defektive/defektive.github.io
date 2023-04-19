@@ -81,12 +81,20 @@ disableHugoGeneratorInject = true
     languageName = "English"
     landingPageName = "<i class='fas fa-home'></i> Home"
 
+
+  [[Languages.en.menu.shortcuts]]
+    name = "<i class='fas fa-fw fa-mug-hot'></i> Buy me a coffee"
+    identifier = "beer"
+    url = "https://www.buymeacoffee.com/defektive"
+    weight = 5
+
   [[Languages.en.menu.shortcuts]]
     name = "<i class='fab fa-fw fa-github'></i> GitHub"
     identifier = "ds"
     url = "https://github.com/defektive"
     weight = 10
 
+  
   [[Languages.en.menu.shortcuts]]
     name = "<i class='fas fa-fw fa-tags'></i> Tags"
     url = "tags/"
