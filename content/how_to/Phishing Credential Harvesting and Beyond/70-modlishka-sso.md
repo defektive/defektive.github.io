@@ -3,6 +3,7 @@ title = "Setup MFA Authentication Provider"
 weight = 70
 +++
 
+> If attending a live training, skip this section
 
 Now that we have Modlishka up and running. Let's get it configured with a target login provider. We'll use Authentik to get an Okta like experience.
 
