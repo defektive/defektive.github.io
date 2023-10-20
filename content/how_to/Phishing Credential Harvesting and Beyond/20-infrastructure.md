@@ -41,6 +41,30 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 
 I also installed VS Code (https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64)
 
+### Testing windows implants
+
+To test windows implants on Linux, install wine (https://wiki.winehq.org/Ubuntu):
+
+```bash
+sudo dpkg --add-architecture i386
+sudo mkdir -pm755 /etc/apt/keyrings\nsudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
+sudo apt update
+sudo apt install --install-recommends winehq-stable
+```
+
+Now a quick test in a terminal:
+
+```bash
+wine cmd.exe
+```
+
+You may get some prompts to follow, you should follow them... Eventually you should get a nice `cmd.exe` prompt.
+
+![Wine CMD](/static/how-to-phishing/wine-cmd.png)
+
+### Docker DNS Magic
+
 In an effort to make things more clear and easier to understand while we hop through browser tabs and URLS, we'll want to setup some DNS magic for our docker containers. This requires us to replace the default `systemd-resolved` in Ubuntu with `dnsmasq`. Then we'll use a program to populate `dnsmasq` configuration with docker container information. This step is only for local testing.
 
 This [article](https://computingforgeeks.com/install-and-configure-dnsmasq-on-ubuntu/) came in handy to switch to `dnsmasq`. In addition to that article, we'll also need to add the following to the `dnsmasq.conf`
@@ -56,11 +80,12 @@ Now we need to install Golang so we can build [docker-dnsmaq](https://github.com
 sudo apt install golang
 go install github.com/defektive/docker-dnsmasq@latest
 ```
+Now would be a good time to add `~/go/bin` to our `$PATH`.
 
 Now we should be able to run this in a new terminal window:
 
 ```bash
-sudo ~/go/bin/docker-dnsmasq daemon
+sudo `which docker-dnsmasq` daemon
 ```
 
 We can test everything is working properly by starting a container with the `VIRTUAL_HOST` environment variable. Then pinging that docker container `VIRTUAL_HOST` name.

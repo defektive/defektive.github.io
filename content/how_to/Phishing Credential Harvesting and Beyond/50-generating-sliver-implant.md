@@ -8,7 +8,7 @@ weight = 50
 ```bash
 mkdir -p ~/Desktop/op/sliver/implants
 cd ~/Desktop/op/sliver
-~/opt/sliver/sliver-server_linux
+sliver-server_linux
 ```
 
 We should now be in a `sliver` shell.

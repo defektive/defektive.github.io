@@ -29,7 +29,21 @@ Now we need to determine the session cookie.
 
 Looks like `authentik_session` maybe the one we are after. We are lucky they used descriptive names and very few cookies.
 
+Since we are testing in a lab environment, we need to configure `modlishka` to allow connections to private IPs. Change `disableSecurity` to `true` in the `config.json` file.
+
+```json
+  "disableSecurity": true,
+```
+
 We have all the required information to reconfigure Modlishka. Now we nee to start updating Modlishka configuration. We'll start with the `"target"` in Modlishka's configuration.
+
+If you are in a live training, we'll want to configure are target to be the targets auth server.
+
+```json
+  "target": "auth.snakshare.com",
+```
+
+If not in a training this should be sufficient.
 
 ```json
   "target": "auth.target.docker:9000",
