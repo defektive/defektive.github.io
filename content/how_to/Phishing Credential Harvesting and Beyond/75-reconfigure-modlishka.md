@@ -11,7 +11,7 @@ Now we can fill out the username field, press login, then look for the POST requ
 
 ![Username Request](/static/how-to-phishing/authentik-username-post-request.png)
 
-Lets fillet our password and do the same.
+Lets fill out our password and do the same.
 
 ![Password Request](/static/how-to-phishing/authentik-password-post-request.png)
 

@@ -8,11 +8,10 @@ weight = 70
 Now that we have Modlishka up and running. Let's get it configured with a target login provider. We'll use Authentik to get an Okta like experience.
 
 ```bash
-sudo apt-get install -y pwgen
 mkdir ~/Desktop/op/docker/authentik
 cd ~/Desktop/op/docker/
-echo "PG_PASS=$(pwgen -s 40 1)" >> .env
-echo "AUTHENTIK_SECRET_KEY=$(pwgen -s 50 1)" >> .env
+echo "PG_PASS=dumbpassword" >> .env
+echo "AUTHENTIK_SECRET_KEY=supersecretkeythatpaullikes" >> .env
 echo "AUTHENTIK_ERROR_REPORTING__ENABLED=true" >> .env
 ```
 
