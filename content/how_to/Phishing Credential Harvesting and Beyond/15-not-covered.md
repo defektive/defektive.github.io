@@ -7,6 +7,6 @@ These should be considered in real engagements
 
 - Domain reputation.
 - Impossible travel detection's.
-- ~~Target acquisition.~~
+- ~~Target acquisition.~~ Lightly covered.
 - Designing target specific campaigns.
 - ??? Probably more...

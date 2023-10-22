@@ -3,7 +3,6 @@ title = "Introduction"
 weight = 10
 +++
 
-
 Setting the stage for things to come.
 
 - We are going to setup phishing infrastructure.

@@ -23,7 +23,7 @@ Now we should be able to bring up our docker compose environment to test that it
 
 ```bash
 cd ~/Desktop/op/docker/
-sudo docker-compose up
+sudo docker compose up
 ```
 
 Let's open up the web interface now [http://mailhog.docker:8025/](http://mailhog.docker:8025/).
