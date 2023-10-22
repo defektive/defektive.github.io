@@ -1,6 +1,6 @@
 +++
 title = "Better Payload Generation"
-weight = 100
+weight = 110
 +++
 
 ### Better implants (frostbyte bypass windows defender)

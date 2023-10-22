@@ -1,6 +1,6 @@
 +++
 title = "Bot Detection"
-weight = 90
+weight = 120
 +++
 
 

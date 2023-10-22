@@ -1,6 +1,6 @@
 +++
 title = "OSINT"
-weight = 17
+weight = 24
 +++
 
 Lets do some OSINT on our target....

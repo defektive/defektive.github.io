@@ -1,6 +1,6 @@
 +++
 title = "Traefik Reverse Proxy"
-weight = 95
+weight = 125
 +++
 
 

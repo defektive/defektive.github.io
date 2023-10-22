@@ -1,6 +1,6 @@
 +++
 title = "Target Acquisition"
-weight = 17
+weight = 31
 +++
 
 Where can we aquire targets?
