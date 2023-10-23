@@ -24,6 +24,7 @@ Where can we aquire targets?
 
 - Could find valid passwords.
 - Confirm email address formatting.
+- cool services like dehashed mean you dont have to maintain the data.
 
 #### Cons
 
