@@ -68,6 +68,8 @@ HTML:
 
 ## Create a new group to be our target
 
+We can download the CSV template and populate it with our users we found earlier. Then import the CSV template.
+
 ![New Gophish Group](/static/how-to-phishing/gophish-new-group.png)
 
 - Create new Campaign that uses the above.
