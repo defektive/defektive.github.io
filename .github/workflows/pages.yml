@@ -12,33 +12,33 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - uses: actions/checkout@4
-        with:
-          fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
+    - uses: actions/checkout@4
+      with:
+        fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: '0.119.0'
-          extended: true
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v3
+      with:
+        hugo-version: '0.119.0'
+        extended: true
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-          # The action defaults to search for the dependency file (package-lock.json,
-          # npm-shrinkwrap.json or yarn.lock) in the repository root, and uses its
-          # hash as a part of the cache key.
-          # https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#caching-packages-data
-          cache-dependency-path: '**/package-lock.json'
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+        # The action defaults to search for the dependency file (package-lock.json,
+        # npm-shrinkwrap.json or yarn.lock) in the repository root, and uses its
+        # hash as a part of the cache key.
+        # https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#caching-packages-data
+        cache-dependency-path: '**/package-lock.json'
 
-      - run: npm ci
-      - run: hugo --minify
+    - run: npm ci
+    - run: hugo --minify
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: pages
-          publish_dir: ./
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: pages
+        publish_dir: ./
