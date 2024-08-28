@@ -1,12 +1,9 @@
 name: hugo publish
-
 on:
   push:
     branches:
     - main
-
 jobs:
-
   build-deploy:
     runs-on: ubuntu-20.04
     steps:
