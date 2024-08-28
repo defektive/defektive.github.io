@@ -9,7 +9,7 @@ Now we can go back to Gophish, clone our first credential harvesting campaign, m
 
 This will break Gophish's Opened, Clicked, and Data Captured analytics. We can fix those later, but for now we'll just keep moving forward.
 
-![Mailhog MFA Campaign](/static/how-to-phishing/mailhog-mfa-campaign.png)
+![MailHog MFA Campaign](/static/how-to-phishing/mailhog-mfa-campaign.png)
 
 If we click on it we can see in our Modlishka livewell page, we can see our target's RID.
  

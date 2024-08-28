@@ -3,7 +3,7 @@ title = "Target Acquisition"
 weight = 31
 +++
 
-Where can we aquire targets?
+Where can we acquire targets?
 
 ### LinkedIn
 
@@ -24,7 +24,7 @@ Where can we aquire targets?
 
 - Could find valid passwords.
 - Confirm email address formatting.
-- cool services like dehashed mean you dont have to maintain the data.
+- cool services like Dehashed mean you dont have to maintain the data.
 
 #### Cons
 

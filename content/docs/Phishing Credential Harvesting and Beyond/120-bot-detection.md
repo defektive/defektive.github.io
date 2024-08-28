@@ -7,7 +7,7 @@ weight = 120
 
 ### What are bots?
 
-Bots are usually headless browsers that visit links in email and analyze them for threats. This includes looking for logins, especially popular ones that are not on the correct domain. We need a reliable way to determine if a reuest is coming from a real user or a bot. 
+Bots are usually headless browsers that visit links in email and analyze them for threats. This includes looking for logins, especially popular ones that are not on the correct domain. We need a reliable way to determine if a request is coming from a real user or a bot. 
 
 ### How can we detect bots?
 
@@ -66,7 +66,7 @@ botCheck(handleBot, handleNotBot);
 
 We've collected some decent metrics from the URL scan headless browser. We can see that the screen offset it 0. This means that the browser is on the top left corner of the desktop. We'll use that as our simple check for now. However, many mobile browsers will report the same thing, so this isn't a catch all solution. We'd need to spend some time capturing metrics from different bots and real browsers to come up with a decent bot detector.
 
-Lets simplify our Javascript to just ehat we need.
+Lets simplify our Javascript to just what we need.
 
 ```js
 <script>

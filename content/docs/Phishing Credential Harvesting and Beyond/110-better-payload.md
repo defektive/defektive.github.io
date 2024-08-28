@@ -55,7 +55,7 @@ Pay attention to the output. I had to make note of the padding value and add it 
 
 ### Update `dist\AuthHelper.exe.config`
 
-- We need to replace `test` with our executabe name our executable name without the extenaion (`AuthHelper`). 
+- We need to replace `test` with our executable name our executable name without the extension (`AuthHelper`). 
 - Next we need to update the value of `appDomainManagerType` to be something else `NewAuthHelper`.
 - Finally lets make `privatePath` a relative path `.`
 
@@ -103,7 +103,7 @@ We need to modify `C:\Windows\System32\drivers\etc\hosts` and add an entry for `
 ![Notepad Show All Files](/static/how-to-phishing/notepad-open-allfiles.png)
 
 - Browse to `C:\Windows\System32\drivers\etc\`
-- Add en antry for `test.example` to go to your Linux box runnning `sliver`.
+- Add en entry for `test.example` to go to your Linux box running `sliver`.
 ![Windows Hosts File Entry](/static/how-to-phishing/windows-hosts-entry.png)
 
 We should also set defender to not send off samples.

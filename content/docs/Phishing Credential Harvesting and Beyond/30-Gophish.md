@@ -80,7 +80,7 @@ sudo docker compose logs gophish | grep " password "
 
 * * *
 
-### Gophish SMTP Mailhog
+### Gophish SMTP MailHog
 
 Go to `Sending Profiles` > `+ New Sending Profile`.
 
@@ -94,10 +94,10 @@ Go to `Sending Profiles` > `+ New Sending Profile`.
 - Click `Send Test Email`.
 - Fill out the fields with mostly random things.
 
-![Gophish Mailhog Send Test Email](/static/how-to-phishing/gophish-mailhog-smtp-test-email.png)
+![Gophish MailHog Send Test Email](/static/how-to-phishing/gophish-mailhog-smtp-test-email.png)
 
-- We should see a nice testing email in Mailhog
+- We should see a nice testing email in MailHog
 
-![Mailhog Gophish Test Email](/static/how-to-phishing/mailhog-gophish-test-email.png)
+![MailHog Gophish Test Email](/static/how-to-phishing/mailhog-gophish-test-email.png)
 
 - Since everything is working, Click `Save` on the send profile.

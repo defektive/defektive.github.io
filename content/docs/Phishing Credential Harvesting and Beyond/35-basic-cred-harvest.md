@@ -77,9 +77,9 @@ We can download the CSV template and populate it with our users we found earlier
 
 ![Basic Credential Harvesting Campaign](/static/how-to-phishing/basic-cred-harvest-campaign.png)
 
-### Test email in Mailhog
+### Test email in MailHog
 
-- Open Mailhog
+- Open MailHog
 - click link.
 ![First Email](/static/how-to-phishing/first-email.png)
 ![First Landing Page](/static/how-to-phishing/first-landing-page.png)

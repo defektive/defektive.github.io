@@ -8,7 +8,7 @@ draft: true
 
 ## Code Review
 
-Here are some hopefully easiy wins when looking at code. Lets start with some simple language agnostic things to check for.
+Here are some hopefully easily wins when looking at code. Lets start with some simple language agnostic things to check for.
 
 ### Secrets in code and git history
 

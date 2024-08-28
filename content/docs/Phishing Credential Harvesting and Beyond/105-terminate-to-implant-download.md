@@ -8,7 +8,7 @@ weight = 105
 
 We can set our terminationURL to a place where we are hosting our windows implant. This will require them to authenticate then be redirected to a file download page.
 
-Lets add our newly generated payload to the ngix container.
+Lets add our newly generated payload to the NGINX container.
 
 ```bash
 
@@ -27,7 +27,7 @@ update modlishka's termination URL.
 TODO: Screenshot
 
 
-Test it out with modlishkla
+Test it out with Modlishkla
 
 ```bash
 sudo docker compose up

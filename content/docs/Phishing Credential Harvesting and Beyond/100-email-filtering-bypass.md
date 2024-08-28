@@ -6,7 +6,7 @@ weight = 100
 
 ### Bypassing Email Filtering
 
-A lot of times emails will be quarentined based on content. We can trick them by injecting invisble characters and html elements into our messages. 
+A lot of times emails will be quarantined based on content. We can trick them by injecting invisible characters and html elements into our messages. 
 
 We can use a Zero Width Joiner [ref](https://emojipedia.org/zero-width-joiner/) to assist in this. simply pasting the character in the middle of problematic words should do the trick.
 
@@ -25,7 +25,7 @@ Guy Withaface
 IT
 ```
 
-You can't tell the difference just by looking at it. However, if we open it up in vim we can see the diifference.
+You can't tell the difference just by looking at it. However, if we open it up in vim we can see the difference.
 
 ```txt
 All,

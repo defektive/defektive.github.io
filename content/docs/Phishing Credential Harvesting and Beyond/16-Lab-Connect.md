@@ -25,9 +25,9 @@ Use your supplied credentials to login.
 
 You should see two VM connections waiting for you.
 
-![Gucamole Connections](/static/how-to-phishing/guac-vm-connections.png)
+![Guacamole Connections](/static/how-to-phishing/guac-vm-connections.png)
 
 ### Success!
 
-Welcome to the Saintcon Phishing Security team! We have been tasked to perform a social engagement. You will be the lead operator on the engagement. Continue to the RoE when instructed to do so.
+Welcome to the SAINTCON Phishing Security team! We have been tasked to perform a social engagement. You will be the lead operator on the engagement. Continue to the RoE when instructed to do so.
 

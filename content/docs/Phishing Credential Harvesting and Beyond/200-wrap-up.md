@@ -21,7 +21,7 @@ We need the following:
 We like to use Amazon's Route53 for a number of reasons:
 
 - It is pretty simple to acquire domains.
-- Automatable with APIs.
+- Supports automation via APIs.
 - Tooling support.
 
 ### Gophish: Sending Emails FRD
@@ -33,7 +33,7 @@ Now we want to send real emails. We have quite a few options to do this. Our typ
 - Shared hosting (godaddy)
 - Manually setting up postfix
 
-It should be as simple as the Mailhog setup, but using the required credentials...
+It should be as simple as the MailHog setup, but using the required credentials...
 
 * * *
 
