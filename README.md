@@ -1,2 +1,0 @@
-## defektive.github.io
-
