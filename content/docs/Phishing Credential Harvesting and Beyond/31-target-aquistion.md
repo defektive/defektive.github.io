@@ -10,7 +10,7 @@ Where can we acquire targets?
 #### Pros
 
 - Useful job role information.
-- Typically up to date.
+- Usually up to date.
 
 #### Cons
 
@@ -24,7 +24,7 @@ Where can we acquire targets?
 
 - Could find valid passwords.
 - Confirm email address formatting.
-- cool services like Dehashed mean you dont have to maintain the data.
+- cool services like Dehashed mean you don't have to maintain the data.
 
 #### Cons
 

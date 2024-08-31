@@ -7,7 +7,7 @@ weight = 65
 
 Modlishka is an amazing tool that can mirror a website on the fly, rewriting links to ensure the site functions. This allows us to essentially MitM connections to our targeted service from a domain we control.
 
-Lets get a checkout of Modlishka and get things setup to be run in docker.
+Checkout of Modlishka and get things setup to be run in docker.
 
 ```bash
 mkdir ~/Desktop/op/docker/modlishka
@@ -19,7 +19,7 @@ cd Modlishka
 cp extra/docker/* .
 ```
 
-Modlishka can take command line arguments or a configuration file. We are opting to use the configuration file. Lets add the following to `~/Desktop/op/docker/modlishka/modlishka-data/config.json`
+Modlishka can take command line arguments or a configuration file. We are opting to use the configuration file. Add the following to `~/Desktop/op/docker/modlishka/modlishka-data/config.json`
 
 ```json
 {

@@ -3,7 +3,7 @@ title = "Reconfigure Modlishka With MFA Authentication Provider"
 weight = 75
 +++
 
-Let's go through the authentication flow to determine what the username and password fields when conducting a normal login. First thing we want to do is open developer tools and ensure 'Persist Logs` is checked.
+Let's go through the authentication flow to determine what the username and password fields when conducting a normal login. First thing we want to do is open developer tools and ensure `Persist Logs` is checked.
 
 ![Persist Logs](/static/how-to-phishing/authentik-devtools-persist-logs.png)
 
@@ -11,13 +11,13 @@ Now we can fill out the username field, press login, then look for the POST requ
 
 ![Username Request](/static/how-to-phishing/authentik-username-post-request.png)
 
-Lets fill out our password and do the same.
+Fill out our password and do the same.
 
 ![Password Request](/static/how-to-phishing/authentik-password-post-request.png)
 
 We can see that the fields are `uid_field` and `password`.
 
-Now we need to find a URL path that is only hit when the target successfully logs in. Lets finish the authentication process by completing the MFA challenge.
+Now we need to find a URL path that is only hit when the target successfully logs in. Finish the authentication process by completing the MFA challenge.
 
 ![Successful Login Request](/static/how-to-phishing/authentik-login-success-request.png)
 
@@ -35,7 +35,7 @@ Since we are testing in a lab environment, we need to configure `modlishka` to a
   "disableSecurity": true,
 ```
 
-We have all the required information to reconfigure Modlishka. Now we nee to start updating Modlishka configuration. We'll start with the `"target"` in Modlishka's configuration.
+We have all the required information to reconfigure Modlishka. Now we need to start updating Modlishka configuration. We'll start with the `"target"` in Modlishka's configuration.
 
 If you are in a live training, we'll want to configure are target to be the targets auth server.
 

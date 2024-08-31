@@ -122,7 +122,7 @@ volumes:
     driver: local
 ```
 
-Lets test it out.
+Test it out.
 
 ```bash
 sudo docker compose up

@@ -10,7 +10,7 @@ Sliver is an open source C2
 - https://github.com/BishopFox/sliver/wiki/Getting-Started
 - https://github.com/BishopFox/sliver/releases
 
-Download the latest release and put in your `$PATH`. We should already have our dependencies installed when we setup the infrastructure.
+Download the latest release and put in your `$PATH`. We should already have our dependencies installed when we set up the infrastructure.
 
 ```bash
 mkdir ~/bin

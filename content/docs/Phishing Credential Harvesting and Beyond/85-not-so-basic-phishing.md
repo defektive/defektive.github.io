@@ -11,7 +11,7 @@ This will break Gophish's Opened, Clicked, and Data Captured analytics. We can f
 
 ![MailHog MFA Campaign](/static/how-to-phishing/mailhog-mfa-campaign.png)
 
-If we click on it we can see in our Modlishka livewell page, we can see our target's RID.
+If we click on it, we can see in our Modlishka livewell page, we can see our target's RID.
  
 ![Modlishka Livewell Gophish RID](/static/how-to-phishing/modlishka-livewell-gophish-rid.png)
 

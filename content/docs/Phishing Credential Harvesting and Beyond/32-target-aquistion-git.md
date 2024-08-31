@@ -3,7 +3,7 @@ title = "Target Acquisition: Git"
 weight = 32
 +++
 
-Lets go to github and see what we can find. Open https://github.com/snakshare.
+Go to GitHub and see what we can find. Open https://github.com/snakshare.
 
 ```bash
 mkdir -p ~/Desktop/op/code/github.com/snakshare

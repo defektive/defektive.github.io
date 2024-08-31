@@ -25,7 +25,7 @@ Twenty years ago I began learning to program in order to learn how to break prog
 {{% blocks/section %}}
 
 ## Professionally, 
-I lead a small team of talented penetration testers. I oversee everything from scheduling to reporting. I am hands on keyboard alongside my team and believe we can learn from each other every day. Engagements range from code review to full scope black box penetration tests.
+I lead a small team of talented penetration testers. I oversee everything from scheduling to reporting. I am hands-on keyboard alongside my team and believe we can learn from each other every day. Engagements range from code review to full scope black box penetration tests.
 
 {.text-center}
 

@@ -8,7 +8,7 @@ Open up a new private browsing window, then visit [http://modlishka.docker/?rid=
 
 ![Modlishka MFA Login](/static/how-to-phishing/modlishka-mfa-landing.png)
 
-Lets go through the authentication flow. You can Modlishka seamlessly handles the redirects and the MFA authentication flow.
+Go through the authentication flow. You can Modlishka seamlessly handles the redirects and the MFA authentication flow.
 
 ![Modlishka MFA Prompt](/static/how-to-phishing/modlishka-auth-mfa-prompt.png)
 
@@ -22,7 +22,7 @@ Now that we've completed our login, lets check out the Modlishka data. Open [htt
 
 ![Modlishka Livewell](/static/how-to-phishing/modlishka-livewell.png)
 
-Lets click `View Cookies` on our testing UUID.
+Click `View Cookies` on our testing UUID.
 
 ![Modlishka Livewell Authentication Cookie](/static/how-to-phishing/modlishka-livewell-auth-cookie.png)
 

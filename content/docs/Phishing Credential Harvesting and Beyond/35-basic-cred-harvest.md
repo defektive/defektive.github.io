@@ -84,5 +84,5 @@ We can download the CSV template and populate it with our users we found earlier
 ![First Email](/static/how-to-phishing/first-email.png)
 ![First Landing Page](/static/how-to-phishing/first-landing-page.png)
 
-- attempt to login with fake credentials.
+- attempt to log in with fake credentials.
 ![First Campaign Results](/static/how-to-phishing/first-campaign.png)

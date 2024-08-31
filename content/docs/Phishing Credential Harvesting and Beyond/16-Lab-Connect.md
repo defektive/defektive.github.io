@@ -7,15 +7,15 @@ weight = 16
 
 ### Connect to the lab network
 
-Lets get connected to the lab environment.
+Connecting to the lab environment.
 
 - WiFi Name: `SaintConPhishingTraining`
 - WiFi_Pass: `I can haz teh phish now?`
 
 
-### Sign into the lab environment
+### Sign in to the lab environment
 
-Once connected to the WiFi, open the lab environment URL.
+Once connected to the Wi-Fi, open the lab environment URL.
 
 https://console.lab.dfktv:8443/#/
 

@@ -3,7 +3,7 @@ title = "OSINT"
 weight = 24
 +++
 
-Lets do some OSINT on our target....
+It is time to perform OSINT on our target....
 
 
 ```bash
@@ -35,7 +35,7 @@ But that gives us nothing....
 Host 59.119.255.162.in-addr.arpa. not found: 3(NXDOMAIN)
 ```
 
-lets do a whois on the IP address.
+Do a whois on the IP address.
 
 ```bash
 whois 162.255.119.59
@@ -170,7 +170,7 @@ Server: namecheap-nginx
 <a href='https://www.snakshare.com'>Found</a>.
 ```
 
-Lets repeat those steps for the `www` subdomain.
+Repeat those steps for the `www` subdomain.
 
 ```bash
 host www.snakshare.com
@@ -196,7 +196,7 @@ This looks a little different. We have an alias to `snakshare.github.io`.
 host 185.199.109.153
 ```
 
-A host lookup on the IP reveals a github domain.
+A host lookup on the IP reveals a GitHub domain.
 ```
 ➜  ~ host 185.199.109.153
 153.109.199.185.in-addr.arpa domain name pointer cdn-185-199-109-153.github.com.

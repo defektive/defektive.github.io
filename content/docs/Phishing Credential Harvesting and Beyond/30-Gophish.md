@@ -53,7 +53,7 @@ Now we can add Gophish to our docker-compose services.
       - "./gophish/config.json:/opt/gophish/config.json"
 ```
 
-Finally we need to add a Gophish named volume to the end:
+Finally, we need to add a Gophish named volume to the end:
 ```yml
 volumes:
   gophish: 
@@ -65,14 +65,14 @@ We should be able to bring up docker compose now:
 sudo docker compose up
 ```
 
-We need a password to login to Gophish. Gophish automatically sets a password when you first start it. So lets open a new terminal and run the following.
+We need a password to log in to Gophish. Gophish automatically sets a password when you first start it. So lets open a new terminal and run the following.
 
 ```bash
 cd ~/Desktop/op/docker
 sudo docker compose logs gophish | grep " password "
 ```
 
-![Gophish Initial Password](/static/how-to-phishing//gophish-initial-password.png)
+![Gophish Initial Password](/static/how-to-phishing/gophish-initial-password.png)
 
 - Open [http://gophish.docker:3333/](http://gophish.docker:3333/).
 - login with the user `admin` and the password you found in the logs.

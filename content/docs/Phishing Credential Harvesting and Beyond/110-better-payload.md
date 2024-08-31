@@ -5,11 +5,11 @@ weight = 110
 
 ### Better implants (frostbyte bypass windows defender)
 
-Instead of generating a executable. We can generate shellcode. We can then use something like [https://github.com/pwn1sher/frostbyte](https://github.com/pwn1sher/frostbyte) to load that shellcode into memory and execute it.
+Instead of generating an executable. We can generate shellcode. We can then use something like [https://github.com/pwn1sher/frostbyte](https://github.com/pwn1sher/frostbyte) to load that shellcode into memory and execute it.
 
 ### Get frostbyte
 
-Lets get download the [frostbyte zip](https://github.com/pwn1sher/frostbyte/archive/refs/heads/main.zip) from Github.
+Download the [frostbyte zip](https://github.com/pwn1sher/frostbyte/archive/refs/heads/main.zip) from GitHub.
 
 ### Generate shellcode
 
@@ -28,7 +28,7 @@ cp implants/shellcodex64.bin /share/operator-$(ip a | grep 172 | awk '{print $2}
 
 It is time to switch to windows.
 
-Copy the shellcode to your `Desktop\frostbyte-main` folder on the windows machine.
+Copy the shellcode to your `Desktop\frostbyte-main` folder on the Windows machine.
 
 
 
@@ -99,7 +99,7 @@ We need to modify `C:\Windows\System32\drivers\etc\hosts` and add an entry for `
 - Run notepad as administrator
 ![Run Notepad as Administrator](/static/how-to-phishing/notepad-runas.png)
 
-- Ensure you have show all files selected 
+- Ensure you have `All Files` selected 
 ![Notepad Show All Files](/static/how-to-phishing/notepad-open-allfiles.png)
 
 - Browse to `C:\Windows\System32\drivers\etc\`
@@ -123,7 +123,7 @@ We should also set defender to not send off samples.
 Now we should be able to open out `dist` folder and run the `AuthHelper.exe`.
 ![Better Payload Testing](/static/how-to-phishing/better-payload-testing.png)
 
-We should be see a new session popup in Sliver
+We should see a new session popup in Sliver
 ![Better Payload Testing Sliver](/static/how-to-phishing/better-payload-testing-sliver.png)
 
 Now would be a good time to fine tune our code, remove debugging messages, or add a nice special message that says "Good job! Now your more secure!!". 
@@ -153,6 +153,6 @@ Now we should have a nice `.iso` file we can send users.
 
 ### Testing... Again
 
-Now we need to test again to make sure everything is working as designed. Copy the `AuthHelper.iso` to the windows machine. We'd hate for users to receive this message instead of us getting a new session:
+Now we need to test again to make sure everything is working as designed. Copy the `AuthHelper.iso` to the Windows machine. We'd hate for users to receive this message instead of us getting a new session:
 
 ![Error](/static/how-to-phishing/iso-mount-error.png)

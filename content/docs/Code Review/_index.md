@@ -8,13 +8,13 @@ draft: true
 
 ## Code Review
 
-Here are some hopefully easily wins when looking at code. Lets start with some simple language agnostic things to check for.
+Here are some hopefully easily wins when looking at code. Start with some simple language agnostic things to check for.
 
 ### Secrets in code and git history
 
 Trufflehog is an amazing tool that will find secrets based on patterns. If a discovered secret has a known way to validate it, Trufflehog will attempt to verify it.
 
-lets assume you have a repos checked out in a `domain.com/user/repo/`. We can scan all the repos with the following snippet.
+Assume you have a repos checked out in a `domain.com/user/repo/`. We can scan all the repos with the following snippet.
 
 ```bash
 for d in $(ls -d git??b.com/*/*); do trufflehog git file://`pwd`/$d --json | tee truffle-$(echo $d | sed 's|/|-|g').json; done 

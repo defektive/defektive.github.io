@@ -24,7 +24,7 @@ This site is an effort to document things I find interesting. I know I will forg
 
 {{% blocks/section color="dark" type="row" %}}
 {{% blocks/feature icon="fa-lightbulb" title="How Guides!" %}}
-Over time I have learned to do some cool things. You too can learn to do these cool things. Hopefully with less friction then I experienced.
+Over time I have learned to do some cool things. You can learn to do these cool things too. Hopefully with less friction than I experienced.
 
 <a class="btn btn-lg btn-primary me-3 mb-4" href="/how_to/">
   Learn<i class="fas fa-arrow-alt-circle-right ms-2"></i>

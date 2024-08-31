@@ -8,7 +8,7 @@ weight = 105
 
 We can set our terminationURL to a place where we are hosting our windows implant. This will require them to authenticate then be redirected to a file download page.
 
-Lets add our newly generated payload to the NGINX container.
+Add our newly generated payload to the NGINX container.
 
 ```bash
 
