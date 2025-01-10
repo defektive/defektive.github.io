@@ -125,7 +125,7 @@ params:
   offlineSearch: true
 
   # Enable syntax highlighting and copy buttons on code blocks with Prism
-  prism_syntax_highlighting: true
+  prism_syntax_highlighting: false
 
   copyright:
     authors: Brad Horrocks | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0) |
