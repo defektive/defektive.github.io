@@ -12,7 +12,7 @@ coming from a real user or a bot.
 ### How can we detect bots?
 
 To do this we can use javascript to inspect the browser that is visiting our page. There are a number of decent articles
-out there on how to do this. We'll use hat minimum to detect [urlscan.io](https://urlscan.io).
+out there on how to do this. We'll use at minimum to detect [urlscan.io](https://urlscan.io).
 
 Example test script for enumerating bots. We are using [urlscan.io](https://urlscan.io) to screenshot it and read the
 output. However, if we were testing email bots, we'd probably want to send this information to a server so we could
