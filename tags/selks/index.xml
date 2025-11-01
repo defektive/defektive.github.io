@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SELKS on defektive</title><link>https://defektive.github.io/tags/selks/</link><description>Recent content in SELKS on defektive</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 23 Apr 2019 16:20:01 +0000</lastBuildDate><atom:link href="https://defektive.github.io/tags/selks/index.xml" rel="self" type="application/rss+xml"/><item><title>PfSense and SELKS</title><link>https://defektive.github.io/blog/2019/04/23/pfsense-and-selks/</link><pubDate>Tue, 23 Apr 2019 16:20:01 +0000</pubDate><guid>https://defektive.github.io/blog/2019/04/23/pfsense-and-selks/</guid><description>I installed SELKS this in a VM. I am using Fedora Server (which I kind of regret because of the updates).
-Once installed I went to my PfSense firewall admin interface, to bridge LAN and WAN to a 3rd interface ( OPT1). ref
-WAN + | | +--------------v----------------+ | | | | | PfSense | | | | | | | +---+--------------------+------+ | | | | | | v v LAN OPT1 (to SELKS Monitor port) PfSense logs in SELKS kibana I used some files from here, then enabled log forwarding in pfsense</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SELKS on defektive</title><link>https://defektive.github.io/tags/selks/</link><description>Recent content in SELKS on defektive</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sat, 31 Aug 2024 14:30:55 -0600</lastBuildDate><atom:link href="https://defektive.github.io/tags/selks/index.xml" rel="self" type="application/rss+xml"/><item><title>PfSense and SELKS</title><link>https://defektive.github.io/blog/2019/04/23/pfsense-and-selks/</link><pubDate>Tue, 23 Apr 2019 16:20:01 +0000</pubDate><guid>https://defektive.github.io/blog/2019/04/23/pfsense-and-selks/</guid><description>&lt;p&gt;I installed &lt;a href="https://www.stamus-networks.com/2017/08/22/selks-4-0/"&gt;SELKS&lt;/a&gt; this in a VM. I am using Fedora Server (which
+I kind of regret because of the updates).&lt;/p&gt;
+&lt;p&gt;Once installed I went to my PfSense firewall admin interface, to bridge LAN and WAN to a 3rd interface (
+OPT1). &lt;a href="https://www.techdodo.co.uk/adding-span-port-pfsense"&gt;ref&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; WAN
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; +
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; +--------------v----------------+
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; | |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; | |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; | PfSense |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; | |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; | |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; | |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; +---+--------------------+------+
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; | |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; | |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; | |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; v v
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; LAN OPT1
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; (to SELKS Monitor port)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="pfsense-logs-in-selks-kibana"&gt;PfSense logs in SELKS kibana&lt;a class="td-heading-self-link" href="#pfsense-logs-in-selks-kibana" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;I used some files from &lt;a href="https://github.com/patrickjennings/logstash-pfsense"&gt;here&lt;/a&gt;, then
+enabled &lt;a href="https://docs.netgate.com/pfsense/en/latest/monitoring/copying-logs-to-a-remote-host-with-syslog.html"&gt;log forwarding in pfsense&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

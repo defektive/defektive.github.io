@@ -1,6 +1,45 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>cloud metadata URLs on defektive</title><link>https://defektive.github.io/tags/cloud-metadata-urls/</link><description>Recent content in cloud metadata URLs on defektive</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 30 Jan 2020 16:20:01 +0000</lastBuildDate><atom:link href="https://defektive.github.io/tags/cloud-metadata-urls/index.xml" rel="self" type="application/rss+xml"/><item><title>Cloud metadata URLs</title><link>https://defektive.github.io/blog/2020/01/30/cloud-metadata-urls/</link><pubDate>Thu, 30 Jan 2020 16:20:01 +0000</pubDate><guid>https://defektive.github.io/blog/2020/01/30/cloud-metadata-urls/</guid><description>Alibaba http://100.100.100.200/latest/meta-data/ http://100.100.100.200/latest/meta-data/instance-id http://100.100.100.200/latest/meta-data/image-id References
-https://www.alibabacloud.com/help/faq-detail/49122.htm AWS http://169.254.169.254/latest/user-data http://169.254.169.254/latest/user-data/iam/security-credentials/[ROLE NAME] http://169.254.169.254/latest/meta-data/iam/security-credentials/ http://169.254.169.254/latest/meta-data/iam/security-credentials/[ROLE NAME] http://169.254.169.254/latest/meta-data/ami-id http://169.254.169.254/latest/meta-data/reservation-id http://169.254.169.254/latest/meta-data/hostname http://169.254.169.254/latest/meta-data/public-keys/0/openssh-key http://169.254.169.254/latest/meta-data/public-keys/[ID]/openssh-key http://169.254.169.254/ http://169.254.169.254/latest/meta-data/ http://169.254.169.254/latest/meta-data/public-keys/ ECS Task http://169.254.170.2/v2/credentials/ References
-http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html#instancedata-data-categories https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-metadata-endpoint-v2.html Azure No header Required http://169.254.169.254/metadata/v1/maintenance Requires header Must use Metadata: true request header
-http://169.254.169.254/metadata/instance?api-version=2017-04-02 http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-04-02&amp;amp;format=text References
-https://azure.microsoft.com/en-us/blog/what-just-happened-to-my-vm-in-vm-metadata-service/ https://docs.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service Google Cloud Requires header Must use one of the following headers
-Metadata-Flavor: Google X-Google-Metadata-Request: True http://169.254.169.254/computeMetadata/v1/ http://metadata.google.internal/computeMetadata/v1/ http://metadata/computeMetadata/v1/ http://metadata.google.internal/computeMetadata/v1/instance/hostname http://metadata.google.internal/computeMetadata/v1/instance/id http://metadata.google.internal/computeMetadata/v1/project/project-id http://metadata.google.internal/computeMetadata/v1/instance/disks/?recursive=true No header required (old) http://metadata.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cloud Metadata URLs on defektive</title><link>https://defektive.github.io/tags/cloud-metadata-urls/</link><description>Recent content in Cloud Metadata URLs on defektive</description><generator>Hugo</generator><language>en</language><lastBuildDate>Wed, 28 Aug 2024 12:25:06 -0600</lastBuildDate><atom:link href="https://defektive.github.io/tags/cloud-metadata-urls/index.xml" rel="self" type="application/rss+xml"/><item><title>Cloud metadata URLs</title><link>https://defektive.github.io/blog/2020/01/30/cloud-metadata-urls/</link><pubDate>Thu, 30 Jan 2020 16:20:01 +0000</pubDate><guid>https://defektive.github.io/blog/2020/01/30/cloud-metadata-urls/</guid><description>&lt;h3 id="alibaba"&gt;Alibaba&lt;a class="td-heading-self-link" href="#alibaba" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://100.100.100.200/latest/meta-data/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://100.100.100.200/latest/meta-data/instance-id
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://100.100.100.200/latest/meta-data/image-id
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.alibabacloud.com/help/faq-detail/49122.htm"&gt;https://www.alibabacloud.com/help/faq-detail/49122.htm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;h3 id="aws"&gt;AWS&lt;a class="td-heading-self-link" href="#aws" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/user-data
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/user-data/iam/security-credentials/[ROLE NAME]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/meta-data/iam/security-credentials/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/meta-data/iam/security-credentials/[ROLE NAME]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/meta-data/ami-id
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/meta-data/reservation-id
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/meta-data/hostname
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/meta-data/public-keys/0/openssh-key
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/meta-data/public-keys/[ID]/openssh-key
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/meta-data/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/meta-data/public-keys/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id="ecs-task"&gt;ECS Task&lt;a class="td-heading-self-link" href="#ecs-task" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.170.2/v2/credentials/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html#instancedata-data-categories"&gt;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html#instancedata-data-categories&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-metadata-endpoint-v2.html"&gt;https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-metadata-endpoint-v2.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;h3 id="azure"&gt;Azure&lt;a class="td-heading-self-link" href="#azure" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="no-header-required"&gt;No header Required&lt;a class="td-heading-self-link" href="#no-header-required" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/metadata/v1/maintenance
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id="requires-header"&gt;Requires header&lt;a class="td-heading-self-link" href="#requires-header" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Must use &lt;code&gt;Metadata: true&lt;/code&gt; request header&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/metadata/instance?api-version=2017-04-02
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-04-02&amp;amp;format=text
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://azure.microsoft.com/en-us/blog/what-just-happened-to-my-vm-in-vm-metadata-service/"&gt;https://azure.microsoft.com/en-us/blog/what-just-happened-to-my-vm-in-vm-metadata-service/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service"&gt;https://docs.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;h3 id="google-cloud"&gt;Google Cloud&lt;a class="td-heading-self-link" href="#google-cloud" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="requires-header-1"&gt;Requires header&lt;a class="td-heading-self-link" href="#requires-header-1" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Must use one of the following headers&lt;/strong&gt;&lt;/p&gt;</description></item></channel></rss>

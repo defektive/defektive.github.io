@@ -1,2 +1,118 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Phishing on defektive</title><link>https://defektive.github.io/tags/phishing/</link><description>Recent content in Phishing on defektive</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 30 Sep 2023 09:05:01 +0000</lastBuildDate><atom:link href="https://defektive.github.io/tags/phishing/index.xml" rel="self" type="application/rss+xml"/><item><title>Phishing Credential Harvesting and Beyond</title><link>https://defektive.github.io/docs/phishing-credential-harvesting-and-beyond/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/phishing-credential-harvesting-and-beyond/</guid><description>Learn how to run successful phishing campaigns.</description></item><item><title>SaintCON Training</title><link>https://defektive.github.io/blog/2023/09/30/saintcon-training/</link><pubDate>Sat, 30 Sep 2023 09:05:01 +0000</pubDate><guid>https://defektive.github.io/blog/2023/09/30/saintcon-training/</guid><description>I&amp;rsquo;ve been working on a phishing training for SAINTCON. I used this to brainstorm how I wanted the network laid out.
-Network Diagram flowchart TB wifi--&amp;gt;opnet subgraph labnet [FakeNet] direction TB subgraph corpnet [Corp Network] subgraph corpnetprod [Production Network] smtp[Corporate Web Site] www[Corporate Web Site] webapp[product] end subgraph corpnetinternal [Internal Network] corpuser[Corp User] codehosting[Code Server] end end subgraph wifi [Guest Network] operator001(&amp;#34;Operator Physical Machines&amp;#34;) end subgraph opnet [Op Network] op001(&amp;#34;Operations VMs&amp;#34;) end opnet--&amp;gt;corpnetprod; corpnetinternal&amp;lt;--&amp;gt;corpnetprod; end Work Flows stateDiagram-v2 [*] --&amp;gt; Onboard Onboard --&amp;gt; OSINT OSINT --&amp;gt; InfrastructureDev InfrastructureDev --&amp;gt; CampaignDevelopment CampaignDevelopment --&amp;gt; Test Test --&amp;gt; Phish state Onboard { [*] --&amp;gt; ConnectNet ConnectNet --&amp;gt; AccessVM AccessVM --&amp;gt; ReadDocs ReadDocs --&amp;gt; [*] } state OSINT { [*] --&amp;gt; SearchEngines [*] --&amp;gt; CrunchBase [*] --&amp;gt; LinkedIn [*] --&amp;gt; CodeHosting [*] --&amp;gt; DNSRecon [*] --&amp;gt; MailServers [*] --&amp;gt; LoginPages SearchEngines --&amp;gt; [*] CrunchBase --&amp;gt; [*] LinkedIn --&amp;gt; [*] CodeHosting --&amp;gt; [*] DNSRecon --&amp;gt; [*] MailServers --&amp;gt; [*] LoginPages --&amp;gt; [*] } state InfrastructureDev { SpinUpServices : Spin up Services PointDomains : Point Domains StaticSite : Static Site [*] --&amp;gt; SpinUpServices SpinUpServices --&amp;gt; PointDomains SpinUpServices --&amp;gt; Modlishka SpinUpServices --&amp;gt; Gophish SpinUpServices --&amp;gt; StaticSite Modlishka --&amp;gt; [*] Gophish --&amp;gt; [*] StaticSite --&amp;gt; [*] PointDomains --&amp;gt; [*] } state CampaignDevelopment { [*] --&amp;gt; EmailTemplates [*] --&amp;gt; PayloadCreation EmailTemplates --&amp;gt; TestCampaigns PayloadCreation --&amp;gt; TestCampaigns TestCampaigns --&amp;gt; [*] } state Test { [*] --&amp;gt; SendTestEmail SendTestEmail --&amp;gt; TestCredHarvesting TestCredHarvesting --&amp;gt; TestPayload TestPayload --&amp;gt; [*] } state Phish { [*] --&amp;gt; ScheduleCampaign ScheduleCampaign --&amp;gt; WaitForCreds ScheduleCampaign --&amp;gt; WaitForCallback WaitForCreds --&amp;gt; TakeOverSession TakeOverSession --&amp;gt; AuthenticatedPostExploitation WaitForCallback --&amp;gt; InternalPostExploitation InternalPostExploitation --&amp;gt; [*] AuthenticatedPostExploitation --&amp;gt; [*] }</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Phishing on defektive</title><link>https://defektive.github.io/tags/phishing/</link><description>Recent content in Phishing on defektive</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sat, 31 Aug 2024 14:30:55 -0600</lastBuildDate><atom:link href="https://defektive.github.io/tags/phishing/index.xml" rel="self" type="application/rss+xml"/><item><title>Phishing Credential Harvesting and Beyond</title><link>https://defektive.github.io/docs/phishing-credential-harvesting-and-beyond/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/phishing-credential-harvesting-and-beyond/</guid><description>&lt;p&gt;Learn how to run successful phishing campaigns.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://defektive.github.io/static/how-to-phishing/qr-code.png" alt="QR Code"&gt;&lt;/p&gt;</description></item><item><title>SaintCON Training</title><link>https://defektive.github.io/blog/2023/09/30/saintcon-training/</link><pubDate>Sat, 30 Sep 2023 09:05:01 +0000</pubDate><guid>https://defektive.github.io/blog/2023/09/30/saintcon-training/</guid><description>&lt;p&gt;I&amp;rsquo;ve been working on a phishing training for SAINTCON. I used this to brainstorm how I wanted the network laid out.&lt;/p&gt;
+
+&lt;h2 id="network-diagram"&gt;Network Diagram&lt;a class="td-heading-self-link" href="#network-diagram" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;pre class="mermaid"&gt;flowchart TB
+wifi--&amp;gt;opnet
+
+subgraph labnet [FakeNet]
+ direction TB
+
+ subgraph corpnet [Corp Network]
+ subgraph corpnetprod [Production Network]
+
+
+ smtp[Corporate Web Site]
+ www[Corporate Web Site]
+ webapp[product]
+ end
+
+ subgraph corpnetinternal [Internal Network]
+
+ corpuser[Corp User]
+ codehosting[Code Server]
+
+ end
+
+ end
+
+
+ subgraph wifi [Guest Network]
+ operator001(&amp;#34;Operator Physical Machines&amp;#34;)
+ end
+
+
+
+ subgraph opnet [Op Network]
+ op001(&amp;#34;Operations VMs&amp;#34;)
+ end
+
+
+ opnet--&amp;gt;corpnetprod;
+ corpnetinternal&amp;lt;--&amp;gt;corpnetprod;
+
+end&lt;/pre&gt;
+
+&lt;h2 id="work-flows"&gt;Work Flows&lt;a class="td-heading-self-link" href="#work-flows" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;pre class="mermaid"&gt;stateDiagram-v2
+ [*] --&amp;gt; Onboard
+ Onboard --&amp;gt; OSINT
+ OSINT --&amp;gt; InfrastructureDev
+ InfrastructureDev --&amp;gt; CampaignDevelopment
+ CampaignDevelopment --&amp;gt; Test
+ Test --&amp;gt; Phish
+
+ state Onboard {
+ [*] --&amp;gt; ConnectNet
+ ConnectNet --&amp;gt; AccessVM
+ AccessVM --&amp;gt; ReadDocs
+ ReadDocs --&amp;gt; [*]
+ }
+
+ state OSINT {
+ [*] --&amp;gt; SearchEngines
+ [*] --&amp;gt; CrunchBase
+ [*] --&amp;gt; LinkedIn
+ [*] --&amp;gt; CodeHosting
+ [*] --&amp;gt; DNSRecon
+ [*] --&amp;gt; MailServers
+ [*] --&amp;gt; LoginPages
+ SearchEngines --&amp;gt; [*]
+ CrunchBase --&amp;gt; [*]
+ LinkedIn --&amp;gt; [*]
+ CodeHosting --&amp;gt; [*]
+ DNSRecon --&amp;gt; [*]
+ MailServers --&amp;gt; [*]
+ LoginPages --&amp;gt; [*]
+ }
+
+ state InfrastructureDev {
+ SpinUpServices : Spin up Services
+ PointDomains : Point Domains
+ StaticSite : Static Site
+
+ [*] --&amp;gt; SpinUpServices
+ SpinUpServices --&amp;gt; PointDomains
+ SpinUpServices --&amp;gt; Modlishka
+ SpinUpServices --&amp;gt; Gophish
+ SpinUpServices --&amp;gt; StaticSite
+ Modlishka --&amp;gt; [*]
+ Gophish --&amp;gt; [*]
+ StaticSite --&amp;gt; [*]
+ PointDomains --&amp;gt; [*]
+ }
+
+ state CampaignDevelopment {
+
+ [*] --&amp;gt; EmailTemplates
+ [*] --&amp;gt; PayloadCreation
+ EmailTemplates --&amp;gt; TestCampaigns
+ PayloadCreation --&amp;gt; TestCampaigns
+ TestCampaigns --&amp;gt; [*]
+ }
+
+ state Test {
+ [*] --&amp;gt; SendTestEmail
+ SendTestEmail --&amp;gt; TestCredHarvesting
+ TestCredHarvesting --&amp;gt; TestPayload
+ TestPayload --&amp;gt; [*]
+ }
+
+ state Phish {
+ [*] --&amp;gt; ScheduleCampaign
+ ScheduleCampaign --&amp;gt; WaitForCreds
+ ScheduleCampaign --&amp;gt; WaitForCallback
+ WaitForCreds --&amp;gt; TakeOverSession
+ TakeOverSession --&amp;gt; AuthenticatedPostExploitation
+ WaitForCallback --&amp;gt; InternalPostExploitation
+ InternalPostExploitation --&amp;gt; [*]
+ AuthenticatedPostExploitation --&amp;gt; [*]
+ }&lt;/pre&gt;</description></item></channel></rss>

@@ -1,18 +1,305 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Random on defektive</title><link>https://defektive.github.io/blog/random/</link><description>Recent content in Random on defektive</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://defektive.github.io/blog/random/index.xml" rel="self" type="application/rss+xml"/><item><title>Adventures in Python</title><link>https://defektive.github.io/blog/2025/01/09/adventures-in-python/</link><pubDate>Thu, 09 Jan 2025 00:00:00 +0000</pubDate><guid>https://defektive.github.io/blog/2025/01/09/adventures-in-python/</guid><description>I try to like python. I really do. I attempt to use it and be like all the other cool people. Sadly, I am a dumb python noob. I see an import like:
-from Crypto.Cipher import AES Cool, lets install the crypto pacakge&amp;hellip;
-pip install crypto It returns command not found: pip, fair enough. I am not a python dev, my environment isn&amp;rsquo;t setup. Lets run the module.
-python3 -m pip install crypto More errors:</description></item><item><title>Packer, Ubuntu Noble, and VirtualBox</title><link>https://defektive.github.io/blog/2024/08/31/packer-ubuntu-noble-and-virtualbox/</link><pubDate>Sat, 31 Aug 2024 00:00:00 +0000</pubDate><guid>https://defektive.github.io/blog/2024/08/31/packer-ubuntu-noble-and-virtualbox/</guid><description>I have been using Packer for quite a while. However, all my interactions have used JSON instead of HCL. I wanted to set up a new build using HCL, VirtualBox, and Ubuntu 24.04. I am going to attempt to create documentation for using HCL with VirtualBox to build a custom image based on the latest Ubuntu LTS release (with cloud init).
-In my research I found some decent guides that did most of what I wanted.</description></item><item><title>SaintCON Training</title><link>https://defektive.github.io/blog/2023/09/30/saintcon-training/</link><pubDate>Sat, 30 Sep 2023 09:05:01 +0000</pubDate><guid>https://defektive.github.io/blog/2023/09/30/saintcon-training/</guid><description>I&amp;rsquo;ve been working on a phishing training for SAINTCON. I used this to brainstorm how I wanted the network laid out.
-Network Diagram flowchart TB wifi--&amp;gt;opnet subgraph labnet [FakeNet] direction TB subgraph corpnet [Corp Network] subgraph corpnetprod [Production Network] smtp[Corporate Web Site] www[Corporate Web Site] webapp[product] end subgraph corpnetinternal [Internal Network] corpuser[Corp User] codehosting[Code Server] end end subgraph wifi [Guest Network] operator001(&amp;#34;Operator Physical Machines&amp;#34;) end subgraph opnet [Op Network] op001(&amp;#34;Operations VMs&amp;#34;) end opnet--&amp;gt;corpnetprod; corpnetinternal&amp;lt;--&amp;gt;corpnetprod; end Work Flows stateDiagram-v2 [*] --&amp;gt; Onboard Onboard --&amp;gt; OSINT OSINT --&amp;gt; InfrastructureDev InfrastructureDev --&amp;gt; CampaignDevelopment CampaignDevelopment --&amp;gt; Test Test --&amp;gt; Phish state Onboard { [*] --&amp;gt; ConnectNet ConnectNet --&amp;gt; AccessVM AccessVM --&amp;gt; ReadDocs ReadDocs --&amp;gt; [*] } state OSINT { [*] --&amp;gt; SearchEngines [*] --&amp;gt; CrunchBase [*] --&amp;gt; LinkedIn [*] --&amp;gt; CodeHosting [*] --&amp;gt; DNSRecon [*] --&amp;gt; MailServers [*] --&amp;gt; LoginPages SearchEngines --&amp;gt; [*] CrunchBase --&amp;gt; [*] LinkedIn --&amp;gt; [*] CodeHosting --&amp;gt; [*] DNSRecon --&amp;gt; [*] MailServers --&amp;gt; [*] LoginPages --&amp;gt; [*] } state InfrastructureDev { SpinUpServices : Spin up Services PointDomains : Point Domains StaticSite : Static Site [*] --&amp;gt; SpinUpServices SpinUpServices --&amp;gt; PointDomains SpinUpServices --&amp;gt; Modlishka SpinUpServices --&amp;gt; Gophish SpinUpServices --&amp;gt; StaticSite Modlishka --&amp;gt; [*] Gophish --&amp;gt; [*] StaticSite --&amp;gt; [*] PointDomains --&amp;gt; [*] } state CampaignDevelopment { [*] --&amp;gt; EmailTemplates [*] --&amp;gt; PayloadCreation EmailTemplates --&amp;gt; TestCampaigns PayloadCreation --&amp;gt; TestCampaigns TestCampaigns --&amp;gt; [*] } state Test { [*] --&amp;gt; SendTestEmail SendTestEmail --&amp;gt; TestCredHarvesting TestCredHarvesting --&amp;gt; TestPayload TestPayload --&amp;gt; [*] } state Phish { [*] --&amp;gt; ScheduleCampaign ScheduleCampaign --&amp;gt; WaitForCreds ScheduleCampaign --&amp;gt; WaitForCallback WaitForCreds --&amp;gt; TakeOverSession TakeOverSession --&amp;gt; AuthenticatedPostExploitation WaitForCallback --&amp;gt; InternalPostExploitation InternalPostExploitation --&amp;gt; [*] AuthenticatedPostExploitation --&amp;gt; [*] }</description></item><item><title>Curl Resolve DNS through Proxy</title><link>https://defektive.github.io/blog/2021/02/17/curl-resolve-dns-through-proxy/</link><pubDate>Wed, 17 Feb 2021 12:20:01 +0000</pubDate><guid>https://defektive.github.io/blog/2021/02/17/curl-resolve-dns-through-proxy/</guid><description>If you append h to your socks5 protocol prefix when using --proxy the DNS resolution happens on the other side of the socks proxy!
-curl --proxy socks5h://127.0.0.1:1080 http://internal-host</description></item><item><title>Cloud metadata URLs</title><link>https://defektive.github.io/blog/2020/01/30/cloud-metadata-urls/</link><pubDate>Thu, 30 Jan 2020 16:20:01 +0000</pubDate><guid>https://defektive.github.io/blog/2020/01/30/cloud-metadata-urls/</guid><description>Alibaba http://100.100.100.200/latest/meta-data/ http://100.100.100.200/latest/meta-data/instance-id http://100.100.100.200/latest/meta-data/image-id References
-https://www.alibabacloud.com/help/faq-detail/49122.htm AWS http://169.254.169.254/latest/user-data http://169.254.169.254/latest/user-data/iam/security-credentials/[ROLE NAME] http://169.254.169.254/latest/meta-data/iam/security-credentials/ http://169.254.169.254/latest/meta-data/iam/security-credentials/[ROLE NAME] http://169.254.169.254/latest/meta-data/ami-id http://169.254.169.254/latest/meta-data/reservation-id http://169.254.169.254/latest/meta-data/hostname http://169.254.169.254/latest/meta-data/public-keys/0/openssh-key http://169.254.169.254/latest/meta-data/public-keys/[ID]/openssh-key http://169.254.169.254/ http://169.254.169.254/latest/meta-data/ http://169.254.169.254/latest/meta-data/public-keys/ ECS Task http://169.254.170.2/v2/credentials/ References
-http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html#instancedata-data-categories https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-metadata-endpoint-v2.html Azure No header Required http://169.254.169.254/metadata/v1/maintenance Requires header Must use Metadata: true request header
-http://169.254.169.254/metadata/instance?api-version=2017-04-02 http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-04-02&amp;amp;format=text References
-https://azure.microsoft.com/en-us/blog/what-just-happened-to-my-vm-in-vm-metadata-service/ https://docs.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service Google Cloud Requires header Must use one of the following headers
-Metadata-Flavor: Google X-Google-Metadata-Request: True http://169.254.169.254/computeMetadata/v1/ http://metadata.google.internal/computeMetadata/v1/ http://metadata/computeMetadata/v1/ http://metadata.google.internal/computeMetadata/v1/instance/hostname http://metadata.google.internal/computeMetadata/v1/instance/id http://metadata.google.internal/computeMetadata/v1/project/project-id http://metadata.google.internal/computeMetadata/v1/instance/disks/?recursive=true No header required (old) http://metadata.</description></item><item><title>PfSense and SELKS</title><link>https://defektive.github.io/blog/2019/04/23/pfsense-and-selks/</link><pubDate>Tue, 23 Apr 2019 16:20:01 +0000</pubDate><guid>https://defektive.github.io/blog/2019/04/23/pfsense-and-selks/</guid><description>I installed SELKS this in a VM. I am using Fedora Server (which I kind of regret because of the updates).
-Once installed I went to my PfSense firewall admin interface, to bridge LAN and WAN to a 3rd interface ( OPT1). ref
-WAN + | | +--------------v----------------+ | | | | | PfSense | | | | | | | +---+--------------------+------+ | | | | | | v v LAN OPT1 (to SELKS Monitor port) PfSense logs in SELKS kibana I used some files from here, then enabled log forwarding in pfsense</description></item><item><title>Anyproxy Intercept</title><link>https://defektive.github.io/blog/2019/03/11/anyproxy-intercept/</link><pubDate>Mon, 11 Mar 2019 16:20:01 +0000</pubDate><guid>https://defektive.github.io/blog/2019/03/11/anyproxy-intercept/</guid><description>Anyproxy is an intercept proxy. I used it to inject scripts into pages to assist in web fuzzing.
-const AnyProxy = require(&amp;#39;./anyproxy/proxy&amp;#39;); const options = { port: 8080, rule: require(&amp;#39;./dfkt_rule&amp;#39;), webInterface: { enable: true, webPort: 8002 }, throttle: 10000, forceProxyHttps: true, wsIntercept: true, silent: false }; const proxyServer = new AnyProxy.ProxyServer(options); proxyServer.on(&amp;#39;ready&amp;#39;, () =&amp;gt; { console.log(&amp;#39;ready&amp;#39;) }); proxyServer.on(&amp;#39;error&amp;#39;, (e) =&amp;gt; { console.error(e) }); proxyServer.start(); //when finished // dfkt_rule let hooks = { beforeSendRequest: [ function (requestDetail, requestDetailModifications) { requestDetailModifications.</description></item><item><title>Random shell scripting things I may use in the future</title><link>https://defektive.github.io/blog/2019/03/01/random-shell-scripting-things-i-may-use-in-the-future/</link><pubDate>Fri, 01 Mar 2019 16:20:01 +0000</pubDate><guid>https://defektive.github.io/blog/2019/03/01/random-shell-scripting-things-i-may-use-in-the-future/</guid><description>Mass move:
-for f in wlog/*; do for ff in $f/*; do cp &amp;#34;$ff&amp;#34; $(basename $f)-$(basename $ff | sed &amp;#39;s/^00-//g&amp;#39; | sed &amp;#39;s/ /-/g&amp;#39;); done; done Mass Find and replace:
-for f in *todo*; do cat $f | sed -e &amp;#39;s/## &amp;#39;$(basename $f | sed &amp;#39;s/-stand-up-notes.md//&amp;#39;)$&amp;#39;/---\\\ndate: &amp;#34;2019-03-01T16:20:01&amp;#34; title: &amp;#39;$(basename $f | sed &amp;#39;s/-stand-up-notes.md//&amp;#39;)$&amp;#39; stand up notes\\\n---&amp;#39;/ | tee $f ; done Mass adjust markdown headers:
-find . -name &amp;#39;*.md&amp;#39; | while read f; do cat $f | egrep &amp;#39;^##\s&amp;#39; &amp;gt; /dev/null &amp;amp;&amp;amp; echo $f; done | while read fn; do cat $fn | sed &amp;#39;s/^##/###/g&amp;#39; | sed &amp;#39;s/^#\s/## /g&amp;#39; | tee $fn; done Create temp directory:</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Random on defektive</title><link>https://defektive.github.io/blog/random/</link><description>Recent content in Random on defektive</description><generator>Hugo</generator><language>en</language><atom:link href="https://defektive.github.io/blog/random/index.xml" rel="self" type="application/rss+xml"/><item><title>Publish Flutter App to Google Play Using GitHub Actions</title><link>https://defektive.github.io/blog/2025/10/31/publish-flutter-app-to-google-play-using-github-actions/</link><pubDate>Fri, 31 Oct 2025 00:00:00 +0000</pubDate><guid>https://defektive.github.io/blog/2025/10/31/publish-flutter-app-to-google-play-using-github-actions/</guid><description>&lt;p&gt;I have been wanting to do more mobile app development and streamline the release process for a while now. I read a few things on how to publish to the Play Store with GitHub actions, but I kept running into issues. I&amp;rsquo;ll try to document what the issues were and how I was able to get past them.&lt;/p&gt;
+&lt;p&gt;I am using &lt;a href="https://github.com/r0adkll/upload-google-play"&gt;https://github.com/r0adkll/upload-google-play&lt;/a&gt; to publish actions. To make testing easier, I used &lt;a href="https://github.com/nektos/act"&gt;https://github.com/nektos/act&lt;/a&gt; to run my GitHub actions locally. I used the largest docker image, since the other ones didn&amp;rsquo;t seem to have what I needed for Android builds.&lt;/p&gt;</description></item><item><title>Adventures in Python</title><link>https://defektive.github.io/blog/2025/01/09/adventures-in-python/</link><pubDate>Thu, 09 Jan 2025 00:00:00 +0000</pubDate><guid>https://defektive.github.io/blog/2025/01/09/adventures-in-python/</guid><description>&lt;p&gt;I try to like python. I really do. I attempt to use it and be like all the other cool people. Sadly, I am a dumb python noob. I see an import like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;Crypto.Cipher&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;AES&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Cool, lets install the &lt;code&gt;crypto&lt;/code&gt; pacakge&amp;hellip;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;pip install crypto
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;It returns &lt;code&gt;command not found: pip&lt;/code&gt;, fair enough. I am not a python dev, my environment isn&amp;rsquo;t setup. Lets run the module.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;python3 -m pip install crypto
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;More errors:&lt;/p&gt;</description></item><item><title>Packer, Ubuntu Noble, and VirtualBox</title><link>https://defektive.github.io/blog/2024/08/31/packer-ubuntu-noble-and-virtualbox/</link><pubDate>Sat, 31 Aug 2024 00:00:00 +0000</pubDate><guid>https://defektive.github.io/blog/2024/08/31/packer-ubuntu-noble-and-virtualbox/</guid><description>&lt;p&gt;I have been using Packer for quite a while. However, all my interactions have
+used JSON instead of HCL. I wanted to set up a new build using HCL, VirtualBox,
+and Ubuntu 24.04. I am going to attempt to create documentation for using HCL
+with VirtualBox to build a custom image based on the latest Ubuntu LTS release
+(with cloud init).&lt;/p&gt;
+&lt;p&gt;In my research I found some decent guides that did most of what I wanted. I&amp;rsquo;ll
+use these a reference for building my specific use case.&lt;/p&gt;</description></item><item><title>SaintCON Training</title><link>https://defektive.github.io/blog/2023/09/30/saintcon-training/</link><pubDate>Sat, 30 Sep 2023 09:05:01 +0000</pubDate><guid>https://defektive.github.io/blog/2023/09/30/saintcon-training/</guid><description>&lt;p&gt;I&amp;rsquo;ve been working on a phishing training for SAINTCON. I used this to brainstorm how I wanted the network laid out.&lt;/p&gt;
+
+&lt;h2 id="network-diagram"&gt;Network Diagram&lt;a class="td-heading-self-link" href="#network-diagram" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;pre class="mermaid"&gt;flowchart TB
+wifi--&amp;gt;opnet
+
+subgraph labnet [FakeNet]
+ direction TB
+
+ subgraph corpnet [Corp Network]
+ subgraph corpnetprod [Production Network]
+
+
+ smtp[Corporate Web Site]
+ www[Corporate Web Site]
+ webapp[product]
+ end
+
+ subgraph corpnetinternal [Internal Network]
+
+ corpuser[Corp User]
+ codehosting[Code Server]
+
+ end
+
+ end
+
+
+ subgraph wifi [Guest Network]
+ operator001(&amp;#34;Operator Physical Machines&amp;#34;)
+ end
+
+
+
+ subgraph opnet [Op Network]
+ op001(&amp;#34;Operations VMs&amp;#34;)
+ end
+
+
+ opnet--&amp;gt;corpnetprod;
+ corpnetinternal&amp;lt;--&amp;gt;corpnetprod;
+
+end&lt;/pre&gt;
+
+&lt;h2 id="work-flows"&gt;Work Flows&lt;a class="td-heading-self-link" href="#work-flows" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;pre class="mermaid"&gt;stateDiagram-v2
+ [*] --&amp;gt; Onboard
+ Onboard --&amp;gt; OSINT
+ OSINT --&amp;gt; InfrastructureDev
+ InfrastructureDev --&amp;gt; CampaignDevelopment
+ CampaignDevelopment --&amp;gt; Test
+ Test --&amp;gt; Phish
+
+ state Onboard {
+ [*] --&amp;gt; ConnectNet
+ ConnectNet --&amp;gt; AccessVM
+ AccessVM --&amp;gt; ReadDocs
+ ReadDocs --&amp;gt; [*]
+ }
+
+ state OSINT {
+ [*] --&amp;gt; SearchEngines
+ [*] --&amp;gt; CrunchBase
+ [*] --&amp;gt; LinkedIn
+ [*] --&amp;gt; CodeHosting
+ [*] --&amp;gt; DNSRecon
+ [*] --&amp;gt; MailServers
+ [*] --&amp;gt; LoginPages
+ SearchEngines --&amp;gt; [*]
+ CrunchBase --&amp;gt; [*]
+ LinkedIn --&amp;gt; [*]
+ CodeHosting --&amp;gt; [*]
+ DNSRecon --&amp;gt; [*]
+ MailServers --&amp;gt; [*]
+ LoginPages --&amp;gt; [*]
+ }
+
+ state InfrastructureDev {
+ SpinUpServices : Spin up Services
+ PointDomains : Point Domains
+ StaticSite : Static Site
+
+ [*] --&amp;gt; SpinUpServices
+ SpinUpServices --&amp;gt; PointDomains
+ SpinUpServices --&amp;gt; Modlishka
+ SpinUpServices --&amp;gt; Gophish
+ SpinUpServices --&amp;gt; StaticSite
+ Modlishka --&amp;gt; [*]
+ Gophish --&amp;gt; [*]
+ StaticSite --&amp;gt; [*]
+ PointDomains --&amp;gt; [*]
+ }
+
+ state CampaignDevelopment {
+
+ [*] --&amp;gt; EmailTemplates
+ [*] --&amp;gt; PayloadCreation
+ EmailTemplates --&amp;gt; TestCampaigns
+ PayloadCreation --&amp;gt; TestCampaigns
+ TestCampaigns --&amp;gt; [*]
+ }
+
+ state Test {
+ [*] --&amp;gt; SendTestEmail
+ SendTestEmail --&amp;gt; TestCredHarvesting
+ TestCredHarvesting --&amp;gt; TestPayload
+ TestPayload --&amp;gt; [*]
+ }
+
+ state Phish {
+ [*] --&amp;gt; ScheduleCampaign
+ ScheduleCampaign --&amp;gt; WaitForCreds
+ ScheduleCampaign --&amp;gt; WaitForCallback
+ WaitForCreds --&amp;gt; TakeOverSession
+ TakeOverSession --&amp;gt; AuthenticatedPostExploitation
+ WaitForCallback --&amp;gt; InternalPostExploitation
+ InternalPostExploitation --&amp;gt; [*]
+ AuthenticatedPostExploitation --&amp;gt; [*]
+ }&lt;/pre&gt;</description></item><item><title>Curl Resolve DNS through Proxy</title><link>https://defektive.github.io/blog/2021/02/17/curl-resolve-dns-through-proxy/</link><pubDate>Wed, 17 Feb 2021 12:20:01 +0000</pubDate><guid>https://defektive.github.io/blog/2021/02/17/curl-resolve-dns-through-proxy/</guid><description>&lt;p&gt;If you append &lt;code&gt;h&lt;/code&gt; to your socks5 protocol prefix when using &lt;code&gt;--proxy&lt;/code&gt; the DNS resolution happens on the other side of the socks proxy!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;curl --proxy socks5h://127.0.0.1:1080 http://internal-host
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Cloud metadata URLs</title><link>https://defektive.github.io/blog/2020/01/30/cloud-metadata-urls/</link><pubDate>Thu, 30 Jan 2020 16:20:01 +0000</pubDate><guid>https://defektive.github.io/blog/2020/01/30/cloud-metadata-urls/</guid><description>&lt;h3 id="alibaba"&gt;Alibaba&lt;a class="td-heading-self-link" href="#alibaba" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://100.100.100.200/latest/meta-data/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://100.100.100.200/latest/meta-data/instance-id
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://100.100.100.200/latest/meta-data/image-id
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.alibabacloud.com/help/faq-detail/49122.htm"&gt;https://www.alibabacloud.com/help/faq-detail/49122.htm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;h3 id="aws"&gt;AWS&lt;a class="td-heading-self-link" href="#aws" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/user-data
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/user-data/iam/security-credentials/[ROLE NAME]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/meta-data/iam/security-credentials/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/meta-data/iam/security-credentials/[ROLE NAME]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/meta-data/ami-id
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/meta-data/reservation-id
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/meta-data/hostname
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/meta-data/public-keys/0/openssh-key
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/meta-data/public-keys/[ID]/openssh-key
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/meta-data/
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/latest/meta-data/public-keys/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id="ecs-task"&gt;ECS Task&lt;a class="td-heading-self-link" href="#ecs-task" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.170.2/v2/credentials/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html#instancedata-data-categories"&gt;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html#instancedata-data-categories&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-metadata-endpoint-v2.html"&gt;https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-metadata-endpoint-v2.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;h3 id="azure"&gt;Azure&lt;a class="td-heading-self-link" href="#azure" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="no-header-required"&gt;No header Required&lt;a class="td-heading-self-link" href="#no-header-required" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/metadata/v1/maintenance
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id="requires-header"&gt;Requires header&lt;a class="td-heading-self-link" href="#requires-header" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Must use &lt;code&gt;Metadata: true&lt;/code&gt; request header&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/metadata/instance?api-version=2017-04-02
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-04-02&amp;amp;format=text
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://azure.microsoft.com/en-us/blog/what-just-happened-to-my-vm-in-vm-metadata-service/"&gt;https://azure.microsoft.com/en-us/blog/what-just-happened-to-my-vm-in-vm-metadata-service/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service"&gt;https://docs.microsoft.com/en-us/azure/virtual-machines/windows/instance-metadata-service&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;h3 id="google-cloud"&gt;Google Cloud&lt;a class="td-heading-self-link" href="#google-cloud" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="requires-header-1"&gt;Requires header&lt;a class="td-heading-self-link" href="#requires-header-1" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Must use one of the following headers&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>PfSense and SELKS</title><link>https://defektive.github.io/blog/2019/04/23/pfsense-and-selks/</link><pubDate>Tue, 23 Apr 2019 16:20:01 +0000</pubDate><guid>https://defektive.github.io/blog/2019/04/23/pfsense-and-selks/</guid><description>&lt;p&gt;I installed &lt;a href="https://www.stamus-networks.com/2017/08/22/selks-4-0/"&gt;SELKS&lt;/a&gt; this in a VM. I am using Fedora Server (which
+I kind of regret because of the updates).&lt;/p&gt;
+&lt;p&gt;Once installed I went to my PfSense firewall admin interface, to bridge LAN and WAN to a 3rd interface (
+OPT1). &lt;a href="https://www.techdodo.co.uk/adding-span-port-pfsense"&gt;ref&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; WAN
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; +
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; +--------------v----------------+
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; | |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; | |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; | PfSense |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; | |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; | |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; | |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; +---+--------------------+------+
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; | |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; | |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; | |
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; v v
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; LAN OPT1
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; (to SELKS Monitor port)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="pfsense-logs-in-selks-kibana"&gt;PfSense logs in SELKS kibana&lt;a class="td-heading-self-link" href="#pfsense-logs-in-selks-kibana" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;I used some files from &lt;a href="https://github.com/patrickjennings/logstash-pfsense"&gt;here&lt;/a&gt;, then
+enabled &lt;a href="https://docs.netgate.com/pfsense/en/latest/monitoring/copying-logs-to-a-remote-host-with-syslog.html"&gt;log forwarding in pfsense&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Anyproxy Intercept</title><link>https://defektive.github.io/blog/2019/03/11/anyproxy-intercept/</link><pubDate>Mon, 11 Mar 2019 16:20:01 +0000</pubDate><guid>https://defektive.github.io/blog/2019/03/11/anyproxy-intercept/</guid><description>&lt;p&gt;Anyproxy is an intercept proxy. I used it to inject scripts into pages to assist in web fuzzing.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;AnyProxy&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;require&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;./anyproxy/proxy&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;options&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;port&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;8080&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;rule&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;require&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;./dfkt_rule&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;webInterface&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;enable&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;webPort&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;8002&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;throttle&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;10000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;forceProxyHttps&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;wsIntercept&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;silent&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;proxyServer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;AnyProxy&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;ProxyServer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;proxyServer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;on&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ready&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ready&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;proxyServer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;on&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;error&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;error&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;proxyServer&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;start&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;//when finished
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;// dfkt_rule
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;&lt;/span&gt;&lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;hooks&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;beforeSendRequest&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;requestDetail&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;requestDetailModifications&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;requestDetailModifications&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;requestOptions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;requestDetail&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;requestOptions&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;requestDetailModifications&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;requestOptions&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;headers&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;User-Agent&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39; DFKT/1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;beforeSendResponse&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;requestDetail&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;responseDetail&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;modifiedResponse&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;modifiedResponse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;responseDetail&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;response&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;modifiedResponse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;response&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;header&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;modifiedResponse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;response&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;body&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;indexOf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;lt;head&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;!==&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;modifiedResponse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;response&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;body&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;modifiedResponse&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;response&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;body&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toString&lt;/span&gt;&lt;span class="p"&gt;().&lt;/span&gt;&lt;span class="nx"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;lt;head&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;lt;head&amp;gt;&amp;lt;script&amp;gt;console.log(&amp;#34;dfkt loaded&amp;#34;)&amp;lt;/script&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nx"&gt;module&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;exports&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;summary&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;DFKT rules for web testing&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="nx"&gt;beforeSendRequest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;requestDetail&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;requestDetailModifications&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;hook&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nx"&gt;hooks&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;beforeSendRequest&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;hooks&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;beforeSendRequest&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;hook&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="nx"&gt;requestDetail&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;requestDetailModifications&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;requestDetailModifications&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// deal response before send to client
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="nx"&gt;beforeSendResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;requestDetail&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;responseDetail&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;responseDetailModifications&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;hook&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="nx"&gt;hooks&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;beforeSendResponse&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;hooks&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;beforeSendResponse&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;hook&lt;/span&gt;&lt;span class="p"&gt;](&lt;/span&gt;&lt;span class="nx"&gt;requestDetail&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;responseDetail&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;responseDetailModifications&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;responseDetailModifications&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// // if deal https request
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;&lt;/span&gt; &lt;span class="c1"&gt;// *beforeDealHttpsRequest(requestDetail) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;&lt;/span&gt; &lt;span class="c1"&gt;//
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;&lt;/span&gt; &lt;span class="c1"&gt;// },
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;&lt;/span&gt; &lt;span class="c1"&gt;// error happened when dealing requests
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="nx"&gt;onError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;requestDetail&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;error&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="c1"&gt;// error happened when connect to https server
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="nx"&gt;onConnectError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;requestDetail&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;error&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Random shell scripting things I may use in the future</title><link>https://defektive.github.io/blog/2019/03/01/random-shell-scripting-things-i-may-use-in-the-future/</link><pubDate>Fri, 01 Mar 2019 16:20:01 +0000</pubDate><guid>https://defektive.github.io/blog/2019/03/01/random-shell-scripting-things-i-may-use-in-the-future/</guid><description>&lt;p&gt;Mass move:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;for&lt;/span&gt; f in wlog/*&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;for&lt;/span&gt; ff in &lt;span class="nv"&gt;$f&lt;/span&gt;/*&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; cp &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="nv"&gt;$ff&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;basename &lt;span class="nv"&gt;$f&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;-&lt;span class="k"&gt;$(&lt;/span&gt;basename &lt;span class="nv"&gt;$ff&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s/^00-//g&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s/ /-/g&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;done&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Mass Find and replace:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;for&lt;/span&gt; f in *todo*&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; cat &lt;span class="nv"&gt;$f&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed -e &lt;span class="s1"&gt;&amp;#39;s/## &amp;#39;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;basename &lt;span class="nv"&gt;$f&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s/-stand-up-notes.md//&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s1"&gt;$&amp;#39;/---\\\ndate: &amp;#34;2019-03-01T16:20:01&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="s1"&gt;title: &amp;#39;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;basename &lt;span class="nv"&gt;$f&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s/-stand-up-notes.md//&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s1"&gt;$&amp;#39; stand up notes\\\n---&amp;#39;&lt;/span&gt;/ &lt;span class="p"&gt;|&lt;/span&gt; tee &lt;span class="nv"&gt;$f&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Mass adjust markdown headers:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;find . -name &lt;span class="s1"&gt;&amp;#39;*.md&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="nb"&gt;read&lt;/span&gt; f&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; cat &lt;span class="nv"&gt;$f&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; egrep &lt;span class="s1"&gt;&amp;#39;^##\s&amp;#39;&lt;/span&gt; &amp;gt; /dev/null &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;$f&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;done&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="nb"&gt;read&lt;/span&gt; fn&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; cat &lt;span class="nv"&gt;$fn&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s/^##/###/g&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s/^#\s/## /g&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; tee &lt;span class="nv"&gt;$fn&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;done&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Create temp directory:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;tmpDir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;mktemp -d -t tmpdirname.XXXXXXXXXX &lt;span class="o"&gt;||&lt;/span&gt; oops &lt;span class="s2"&gt;&amp;#34;Can&amp;#39;t create temporary directory&amp;#34;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;cleanup&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; rm -rf &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="nv"&gt;$tmpDir&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nb"&gt;trap&lt;/span&gt; cleanup EXIT INT QUIT TERM
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>
