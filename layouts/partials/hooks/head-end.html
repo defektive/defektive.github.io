@@ -1,0 +1,11 @@
+<script>
+    window.addEventListener("load", function () {
+        let nav=document.getElementById("td-section-nav"),
+            a = nav.querySelector(`a[href$='${window.location.pathname}']`);
+        console.log("scroll to sidebar link", a);
+        if (a) {
+            nav.scrollTo(a);
+            nav.scrollTop = a.offsetTop - 100;
+        }
+    })
+</script>
