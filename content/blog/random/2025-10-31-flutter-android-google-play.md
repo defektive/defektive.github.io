@@ -2,7 +2,7 @@
 title: Publish Flutter App to Google Play Using GitHub Actions 
 date: 2025-10-31
 description: >
-  Attempting to embrace Python
+  Embracing continuous delivery
 ---
 
 I have been wanting to do more mobile app development and streamline the release process for a while now. I read a few things on how to publish to the Play Store with GitHub actions, but I kept running into issues. I'll try to document what the issues were and how I was able to get past them.
@@ -34,3 +34,7 @@ node lib/index.js
 
 This helped me confirm/determine my secrets were being referenced incorrectly.
 
+
+### Second Issue `You cannot rollout this release because it does not allow any existing users to upgrade to the newly added APKs.`
+
+This one didn't make sense, so I switched to doing a draft release. So I could inspect the release from the Play Console. Turns out that my efforts to support WearOS made it so I could not support Android phones. This meant none of the android phones using my app would not be able to upgrade to the new version. So I ended up reverting my app support for WearOS. I'll have to figure out how to support watches and phones later. 
