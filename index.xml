@@ -1,4 +1,150 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>defektive</title><link>https://defektive.github.io/</link><description>Recent content on defektive</description><generator>Hugo</generator><language>en</language><atom:link href="https://defektive.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Firebase</title><link>https://defektive.github.io/docs/domain-takeovers/05-firebase/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/domain-takeovers/05-firebase/</guid><description>&lt;p&gt;Currently, Firebase protects against domain takeovers by requiring each domain to have a unique CNAME or TXT record on the affected domain.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>defektive</title><link>https://defektive.github.io/</link><description>Recent content on defektive</description><generator>Hugo</generator><language>en</language><atom:link href="https://defektive.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Automated Scanning with Nuclei</title><link>https://defektive.github.io/docs/pentest-handbook/vulnerability-hunting/nuclei/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/pentest-handbook/vulnerability-hunting/nuclei/</guid><description>&lt;p&gt;&lt;a href="https://github.com/projectdiscovery/nuclei"&gt;&lt;code&gt;nuclei&lt;/code&gt;&lt;/a&gt; does most of the heavy
+lifting in the hunting phase. It runs a big community library of YAML
+&lt;em&gt;templates&lt;/em&gt; — each one a precise check for a specific CVE, misconfiguration,
+default credential, or information exposure — against your targets. It&amp;rsquo;s fast,
+the false-positive rate is low (each template encodes a real matcher), and the
+template set gets updated constantly.&lt;/p&gt;
+
+&lt;h2 id="setup"&gt;Setup&lt;a class="td-heading-self-link" href="#setup" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;nuclei -update &lt;span class="c1"&gt;# update the binary&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;nuclei -update-templates &lt;span class="c1"&gt;# pull the latest template library&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="run-against-your-live-urls"&gt;Run against your live URLs&lt;a class="td-heading-self-link" href="#run-against-your-live-urls" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Feed nuclei the live URL list from &lt;a href="https://defektive.github.io/docs/pentest-handbook/recon/http-probing-and-screenshots/"&gt;HTTP probing&lt;/a&gt;.
+Use a project file so re-runs don&amp;rsquo;t repeat work:&lt;/p&gt;</description></item><item><title>Port Scanning</title><link>https://defektive.github.io/docs/pentest-handbook/recon/port-scanning/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/pentest-handbook/recon/port-scanning/</guid><description>&lt;p&gt;The goal is the complete set of open ports on each host. The pattern that
+balances speed and completeness is &lt;strong&gt;two passes&lt;/strong&gt;: a fast full-range sweep to
+find &lt;em&gt;which&lt;/em&gt; ports are open, then a detailed scan of &lt;em&gt;only&lt;/em&gt; those ports (covered
+in &lt;a href="https://defektive.github.io/docs/pentest-handbook/recon/service-enumeration/"&gt;Service Enumeration&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h2 id="pass-1-fast-full-range-tcp-sweep"&gt;Pass 1: fast full-range TCP sweep&lt;a class="td-heading-self-link" href="#pass-1-fast-full-range-tcp-sweep" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Scan all 65,535 TCP ports quickly to find what&amp;rsquo;s open. I reach for one of two
+tools here.&lt;/p&gt;
+
+&lt;h3 id="nmap-the-classic"&gt;nmap (the classic)&lt;a class="td-heading-self-link" href="#nmap-the-classic" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;host&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;203.0.113.10
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;mkdir -p &lt;span class="s2"&gt;&amp;#34;hosts/&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s2"&gt;/recon&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo nmap -p- --open -Pn -n &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="se"&gt;&lt;/span&gt; --min-rate &lt;span class="m"&gt;1500&lt;/span&gt; --max-retries &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="se"&gt;&lt;/span&gt; -T4 &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="se"&gt;&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;&lt;/span&gt; &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="se"&gt;&lt;/span&gt; -oA &lt;span class="s2"&gt;&amp;#34;hosts/&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s2"&gt;/recon/nmap-quick-tcp&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Pull the open ports into a comma list for pass 2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="nv"&gt;ports&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;awk -F/ &lt;span class="s1"&gt;&amp;#39;/open/{print $1}&amp;#39;&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;hosts/&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s2"&gt;/recon/nmap-quick-tcp.gnmap&amp;#34;&lt;/span&gt; &lt;span class="se"&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="se"&gt;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; tr &lt;span class="s1"&gt;&amp;#39;\n&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;,&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; sed &lt;span class="s1"&gt;&amp;#39;s/,$//&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-p-&lt;/code&gt; — all 65,535 ports.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--open&lt;/code&gt; — only report open ports.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-Pn&lt;/code&gt; — skip host discovery (you already know it&amp;rsquo;s up).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-n&lt;/code&gt; — no DNS resolution (faster, quieter).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--min-rate&lt;/code&gt; / &lt;code&gt;--max-retries&lt;/code&gt; — speed knobs; raise min-rate on robust
+networks, lower it on fragile ones.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id="naabu-faster-for-many-hosts"&gt;naabu (faster for many hosts)&lt;a class="td-heading-self-link" href="#naabu-faster-for-many-hosts" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;a href="https://github.com/projectdiscovery/naabu"&gt;&lt;code&gt;naabu&lt;/code&gt;&lt;/a&gt; uses a SYN scan and is
+noticeably quicker across large host lists. Pipe its results straight into nmap
+for versioning:&lt;/p&gt;</description></item><item><title>Subdomain Enumeration</title><link>https://defektive.github.io/docs/pentest-handbook/discovery/subdomain-enumeration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/pentest-handbook/discovery/subdomain-enumeration/</guid><description>&lt;p&gt;For each in-scope root domain you want every subdomain you can find. There are
+three techniques and they don&amp;rsquo;t fully overlap — I run all three, because each
+one finds names the others miss.&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;Technique&lt;/th&gt;
+ &lt;th&gt;Source&lt;/th&gt;
+ &lt;th&gt;Finds&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;Passive&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;OSINT APIs, search engines, cert logs&lt;/td&gt;
+ &lt;td&gt;Known/indexed names, zero target traffic&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;Active&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;DNS queries against the target&amp;rsquo;s resolvers&lt;/td&gt;
+ &lt;td&gt;Names that resolve but aren&amp;rsquo;t indexed&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;Brute force&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;Wordlist against a resolver&lt;/td&gt;
+ &lt;td&gt;Predictable names (&lt;code&gt;dev&lt;/code&gt;, &lt;code&gt;vpn&lt;/code&gt;, &lt;code&gt;staging&lt;/code&gt;)&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id="passive-subfinder--amass"&gt;Passive: subfinder + amass&lt;a class="td-heading-self-link" href="#passive-subfinder--amass" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;I usually start with &lt;code&gt;subfinder&lt;/code&gt; (ProjectDiscovery) for passive enum — it&amp;rsquo;s
+fast. &lt;code&gt;amass&lt;/code&gt; pulls from a different (overlapping) set of sources, so I run both
+and merge the results.&lt;/p&gt;</description></item><item><title>DNS Resolution</title><link>https://defektive.github.io/docs/pentest-handbook/discovery/dns-resolution/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/pentest-handbook/discovery/dns-resolution/</guid><description>&lt;p&gt;Enumeration gives you a list of &lt;em&gt;candidate&lt;/em&gt; names. Most engagements need to know
+which ones actually resolve, what they resolve to, and which IPs that adds to
+scope. It&amp;rsquo;s a mass-resolution problem — you can easily end up with tens of
+thousands of candidate names.&lt;/p&gt;
+
+&lt;h2 id="mass-resolution-with-dnsx"&gt;Mass resolution with dnsx&lt;a class="td-heading-self-link" href="#mass-resolution-with-dnsx" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Arsenic originally used &lt;code&gt;fast-resolv&lt;/code&gt; for this. These days I use
+&lt;a href="https://github.com/projectdiscovery/dnsx"&gt;&lt;code&gt;dnsx&lt;/code&gt;&lt;/a&gt; (ProjectDiscovery) — it
+resolves huge lists quickly against a pool of resolvers and it&amp;rsquo;s actively
+maintained.&lt;/p&gt;</description></item><item><title>Known Exploits with SearchSploit</title><link>https://defektive.github.io/docs/pentest-handbook/vulnerability-hunting/known-exploits/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/pentest-handbook/vulnerability-hunting/known-exploits/</guid><description>&lt;p&gt;Your &lt;a href="https://defektive.github.io/docs/pentest-handbook/recon/service-enumeration/"&gt;service enumeration&lt;/a&gt; produced versioned
+services — &lt;code&gt;vsftpd 2.3.4&lt;/code&gt;, &lt;code&gt;Apache Tomcat 8.5.32&lt;/code&gt;, &lt;code&gt;OpenSSH 7.2&lt;/code&gt;. SearchSploit
+checks those versions against the offline &lt;a href="https://www.exploit-db.com/"&gt;Exploit-DB&lt;/a&gt;
+archive, so you can find public exploits without leaving your terminal.&lt;/p&gt;
+
+&lt;h2 id="setup"&gt;Setup&lt;a class="td-heading-self-link" href="#setup" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;searchsploit&lt;/code&gt; ships with the &lt;code&gt;exploitdb&lt;/code&gt; package. Keep the database current:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;sudo apt install exploitdb &lt;span class="c1"&gt;# or: git clone exploitdb to /opt and symlink&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;searchsploit -u &lt;span class="c1"&gt;# update the local exploit database&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="feed-it-your-nmap-results-directly"&gt;Feed it your nmap results directly&lt;a class="td-heading-self-link" href="#feed-it-your-nmap-results-directly" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The part I like: searchsploit reads nmap XML and looks up every detected service
+automatically. Point it at the &lt;strong&gt;version/service&lt;/strong&gt; scans (not the quick port
+sweeps). This is what Arsenic&amp;rsquo;s &lt;code&gt;as-searchsploit&lt;/code&gt; does:&lt;/p&gt;</description></item><item><title>Service Enumeration</title><link>https://defektive.github.io/docs/pentest-handbook/recon/service-enumeration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/pentest-handbook/recon/service-enumeration/</guid><description>&lt;p&gt;Knowing port 8080 is open tells you little. Knowing it&amp;rsquo;s &lt;em&gt;Apache Tomcat 9.0.30&lt;/em&gt;
+tells you what default paths to check, what CVEs apply, and what credentials to
+try. Service enumeration turns open ports into identified, versioned services.&lt;/p&gt;
+
+&lt;h2 id="version--default-script-scan"&gt;Version + default-script scan&lt;a class="td-heading-self-link" href="#version--default-script-scan" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Run nmap against &lt;strong&gt;only the ports you found open&lt;/strong&gt; in &lt;a href="https://defektive.github.io/docs/pentest-handbook/recon/port-scanning/"&gt;port
+scanning&lt;/a&gt;, with version detection and the default safe scripts.
+This is the deep, accurate scan, so let it take its time:&lt;/p&gt;</description></item><item><title>Certificate &amp; SSL Harvesting</title><link>https://defektive.github.io/docs/pentest-handbook/discovery/cert-and-ssl-harvesting/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/pentest-handbook/discovery/cert-and-ssl-harvesting/</guid><description>&lt;p&gt;TLS certificates are full of hostnames. A cert&amp;rsquo;s &lt;strong&gt;Common Name (CN)&lt;/strong&gt; and
+&lt;strong&gt;Subject Alternative Names (SANs)&lt;/strong&gt; list every name the operator put on it —
+including internal names, dev hosts, and sibling domains that never show up in
+DNS enumeration or OSINT.&lt;/p&gt;
+&lt;p&gt;There are two angles: passively reading &lt;strong&gt;certificate transparency logs&lt;/strong&gt;
+(covered on the &lt;a href="https://defektive.github.io/docs/pentest-handbook/discovery/subdomain-enumeration/#certificate-transparency-crtsh"&gt;Subdomain Enumeration&lt;/a&gt;
+page) and actively &lt;strong&gt;grabbing certs off live hosts&lt;/strong&gt;. This page is the active
+side. It&amp;rsquo;s worth doing because it catches certs that were never logged to CT and
+certs served directly on IPs with no DNS name at all.&lt;/p&gt;</description></item><item><title>HTTP Probing &amp; Screenshots</title><link>https://defektive.github.io/docs/pentest-handbook/recon/http-probing-and-screenshots/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/pentest-handbook/recon/http-probing-and-screenshots/</guid><description>&lt;p&gt;Web is where most findings live. After port scanning you have a pile of open
+ports that &lt;em&gt;might&lt;/em&gt; be HTTP; this step confirms which ones actually serve web
+content — on which scheme and port, with what title and technology — then
+screenshots them so you can eyeball hundreds of apps in minutes.&lt;/p&gt;
+
+&lt;h2 id="probe-with-httpx"&gt;Probe with httpx&lt;a class="td-heading-self-link" href="#probe-with-httpx" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;I use &lt;a href="https://github.com/projectdiscovery/httpx"&gt;&lt;code&gt;httpx&lt;/code&gt;&lt;/a&gt; (ProjectDiscovery)
+for this. Feed it every host and every web-ish port; it works out http vs https,
+follows redirects, and reports a bunch of metadata.&lt;/p&gt;</description></item><item><title>Subdomain Takeover</title><link>https://defektive.github.io/docs/pentest-handbook/vulnerability-hunting/subdomain-takeover/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/pentest-handbook/vulnerability-hunting/subdomain-takeover/</guid><description>&lt;p&gt;A subdomain takeover happens when a DNS record (usually a CNAME) points at a
+third-party service — S3, GitHub Pages, Heroku, Azure, a SaaS app — that&amp;rsquo;s since
+been deleted or never claimed. Anyone who registers that resource controls
+content served on the client&amp;rsquo;s subdomain. It&amp;rsquo;s high-impact and often overlooked,
+and your &lt;a href="https://defektive.github.io/docs/pentest-handbook/discovery/"&gt;discovery&lt;/a&gt; phase already handed you the full subdomain
+list to check.&lt;/p&gt;
+
+&lt;h2 id="how-to-spot-one"&gt;How to spot one&lt;a class="td-heading-self-link" href="#how-to-spot-one" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The signature is a CNAME pointing to an external service that returns a
+service-specific &amp;ldquo;not found / no such bucket / unclaimed&amp;rdquo; error. For example,
+&lt;code&gt;assets.example.com&lt;/code&gt; CNAME&amp;rsquo;d to a non-existent S3 bucket returns &lt;code&gt;NoSuchBucket&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Content Discovery</title><link>https://defektive.github.io/docs/pentest-handbook/recon/content-discovery/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/pentest-handbook/recon/content-discovery/</guid><description>&lt;p&gt;Apps expose far more than their navigation shows: &lt;code&gt;/admin&lt;/code&gt;, &lt;code&gt;/.git/&lt;/code&gt;,
+&lt;code&gt;/backup.zip&lt;/code&gt;, &lt;code&gt;/api/v1&lt;/code&gt;, &lt;code&gt;/.env&lt;/code&gt;, old &lt;code&gt;/test.php&lt;/code&gt; files. Content discovery
+brute-forces paths against a wordlist to find them. Run it against every live web
+service from &lt;a href="https://defektive.github.io/docs/pentest-handbook/recon/http-probing-and-screenshots/"&gt;HTTP probing&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id="pick-a-fuzzer"&gt;Pick a fuzzer&lt;a class="td-heading-self-link" href="#pick-a-fuzzer" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Arsenic supports &lt;code&gt;gobuster&lt;/code&gt;, &lt;code&gt;dirb&lt;/code&gt;, and &lt;code&gt;ffuf&lt;/code&gt;, defaulting to &lt;strong&gt;ffuf&lt;/strong&gt;. The two
+I actually use:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://github.com/ffuf/ffuf"&gt;ffuf&lt;/a&gt;&lt;/strong&gt; — fast, flexible, good filtering; my
+default.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://github.com/epi052/feroxbuster"&gt;feroxbuster&lt;/a&gt;&lt;/strong&gt; — recursive by
+default, nice for deep trees.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id="wordlists"&gt;Wordlists&lt;a class="td-heading-self-link" href="#wordlists" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;a href="https://github.com/danielmiessler/SecLists"&gt;SecLists&lt;/a&gt; is where I pull wordlists
+from. A solid general-purpose stack (this mirrors Arsenic&amp;rsquo;s default &lt;code&gt;web-content&lt;/code&gt;
+set):&lt;/p&gt;</description></item><item><title>Host Discovery</title><link>https://defektive.github.io/docs/pentest-handbook/discovery/host-discovery/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/pentest-handbook/discovery/host-discovery/</guid><description>&lt;p&gt;You may have hundreds or thousands of IPs in scope, especially after expanding
+CIDRs. Full port scanning all of them is wasteful — most won&amp;rsquo;t be up. Host
+discovery is a fast first pass to find the live ones, so the expensive
+&lt;a href="https://defektive.github.io/docs/pentest-handbook/recon/"&gt;recon&lt;/a&gt; phase only targets hosts that exist.&lt;/p&gt;
+
+&lt;h2 id="expand-cidrs-to-addresses"&gt;Expand CIDRs to addresses&lt;a class="td-heading-self-link" href="#expand-cidrs-to-addresses" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;First, turn any CIDR ranges into individual addresses so you can scan and track
+them per-host. &lt;code&gt;nmap -sL&lt;/code&gt; (&amp;ldquo;list scan&amp;rdquo;) expands ranges without sending a single
+packet:&lt;/p&gt;</description></item><item><title>Firebase</title><link>https://defektive.github.io/docs/domain-takeovers/05-firebase/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/domain-takeovers/05-firebase/</guid><description>&lt;p&gt;Currently, Firebase protects against domain takeovers by requiring each domain to have a unique CNAME or TXT record on the affected domain.&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://defektive.github.io/static/domain-takeovers/firebase.png" alt="Firebase DNS Settings"&gt;&lt;/p&gt;</description></item><item><title>Prerequisites</title><link>https://defektive.github.io/docs/phishing-credential-harvesting-and-beyond/05-preqs/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/phishing-credential-harvesting-and-beyond/05-preqs/</guid><description>&lt;p&gt;Hopefully this describes you:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Human.&lt;/li&gt;
@@ -15,7 +161,124 @@
 &lt;li&gt;Desire to learn, sometimes the hard way (eg: troubleshooting).&lt;/li&gt;
 &lt;li&gt;???&lt;/li&gt;
 &lt;/ul&gt;</description></item><item><title>Squarespace</title><link>https://defektive.github.io/docs/domain-takeovers/05-squarespace/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/domain-takeovers/05-squarespace/</guid><description>&lt;p&gt;Currently, Squarespace protects against domain takeovers by requiring each domain to have a unique CNAME record on the affected domain.&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://defektive.github.io/static/domain-takeovers/squarespace.png" alt="Squarespace DNS Settings"&gt;&lt;/p&gt;</description></item><item><title>Introduction</title><link>https://defektive.github.io/docs/phishing-credential-harvesting-and-beyond/10-introduction/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/phishing-credential-harvesting-and-beyond/10-introduction/</guid><description>&lt;p&gt;Setting the stage for things to come.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://defektive.github.io/static/domain-takeovers/squarespace.png" alt="Squarespace DNS Settings"&gt;&lt;/p&gt;</description></item><item><title>Toolbox Reference</title><link>https://defektive.github.io/docs/pentest-handbook/toolbox-reference/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/pentest-handbook/toolbox-reference/</guid><description>&lt;p&gt;This is the install-and-cheat-sheet companion to the handbook. It lists every
+tool the methodology uses, where it fits, and — where the original Arsenic
+tooling has aged out — what I replaced it with.&lt;/p&gt;
+
+&lt;h2 id="original--current-tool-mapping"&gt;Original → current tool mapping&lt;a class="td-heading-self-link" href="#original--current-tool-mapping" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Arsenic was built around a late-2010s OSCP-era toolchain. Most of it still holds
+up; a few tools have been superseded. The handbook uses the right-hand column.&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;Phase&lt;/th&gt;
+ &lt;th&gt;Job&lt;/th&gt;
+ &lt;th&gt;Arsenic originally used&lt;/th&gt;
+ &lt;th&gt;What I use now&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Discovery&lt;/td&gt;
+ &lt;td&gt;Subdomain enum (passive)&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;amass&lt;/code&gt;, &lt;code&gt;crt.sh&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;subfinder&lt;/code&gt; + &lt;code&gt;amass&lt;/code&gt; + &lt;code&gt;crt.sh&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Discovery&lt;/td&gt;
+ &lt;td&gt;Subdomain brute&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;amass -brute&lt;/code&gt;, &lt;code&gt;gobuster dns&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;dnsx&lt;/code&gt; / &lt;code&gt;puredns&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Discovery&lt;/td&gt;
+ &lt;td&gt;Mass DNS resolution&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;fast-resolv&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;strong&gt;&lt;code&gt;dnsx&lt;/code&gt;&lt;/strong&gt; (or &lt;code&gt;puredns&lt;/code&gt;/&lt;code&gt;massdns&lt;/code&gt;)&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Discovery&lt;/td&gt;
+ &lt;td&gt;Host liveness&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;nmap -sn&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;nmap -sn&lt;/code&gt; + &lt;code&gt;naabu&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Recon&lt;/td&gt;
+ &lt;td&gt;Port scan&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;nmap&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;nmap&lt;/code&gt; + &lt;code&gt;naabu&lt;/code&gt; (&lt;code&gt;masscan&lt;/code&gt; for huge ranges)&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Recon&lt;/td&gt;
+ &lt;td&gt;Service/version&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;nmap -sV -sC -A&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;same&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Recon&lt;/td&gt;
+ &lt;td&gt;HTTP probe&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;httpx&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;httpx&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Recon&lt;/td&gt;
+ &lt;td&gt;Screenshots&lt;/td&gt;
+ &lt;td&gt;&lt;strong&gt;&lt;code&gt;aquatone&lt;/code&gt;&lt;/strong&gt; (archived)&lt;/td&gt;
+ &lt;td&gt;&lt;strong&gt;&lt;code&gt;gowitness&lt;/code&gt;&lt;/strong&gt; (or &lt;code&gt;httpx -screenshot&lt;/code&gt;)&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Recon&lt;/td&gt;
+ &lt;td&gt;Content discovery&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;ffuf&lt;/code&gt;, &lt;code&gt;gobuster&lt;/code&gt;, &lt;code&gt;dirb&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;ffuf&lt;/code&gt; + &lt;code&gt;feroxbuster&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Hunting&lt;/td&gt;
+ &lt;td&gt;Vuln templates&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;nuclei&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;nuclei&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Hunting&lt;/td&gt;
+ &lt;td&gt;Known exploits&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;searchsploit&lt;/code&gt; (Exploit-DB)&lt;/td&gt;
+ &lt;td&gt;same&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Hunting&lt;/td&gt;
+ &lt;td&gt;Subdomain takeover&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;aquatone&lt;/code&gt; tags&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;subzy&lt;/code&gt; / &lt;code&gt;nuclei&lt;/code&gt; takeover templates&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Glue&lt;/td&gt;
+ &lt;td&gt;Scope ingest&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;mlr&lt;/code&gt; (miller), &lt;code&gt;jq&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;same&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Glue&lt;/td&gt;
+ &lt;td&gt;Dedup/diff lists&lt;/td&gt;
+ &lt;td&gt;custom &lt;code&gt;sort&lt;/code&gt;/&lt;code&gt;comm&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;anew&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Reporting&lt;/td&gt;
+ &lt;td&gt;Screenshots&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;flameshot&lt;/code&gt;/&lt;code&gt;maim&lt;/code&gt; + &lt;code&gt;xclip&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;same&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Reporting&lt;/td&gt;
+ &lt;td&gt;Report site&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;hugo&lt;/code&gt; + arsenic-hugo&lt;/td&gt;
+ &lt;td&gt;same&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id="install"&gt;Install&lt;a class="td-heading-self-link" href="#install" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="projectdiscovery-suite-go"&gt;ProjectDiscovery suite (Go)&lt;a class="td-heading-self-link" href="#projectdiscovery-suite-go" aria-label="Heading self-link"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Most of the modern recon flow runs on these. Install &lt;a href="https://go.dev/dl/"&gt;Go&lt;/a&gt;
+first and make sure &lt;code&gt;$(go env GOPATH)/bin&lt;/code&gt; is on your &lt;code&gt;$PATH&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Introduction</title><link>https://defektive.github.io/docs/phishing-credential-harvesting-and-beyond/10-introduction/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://defektive.github.io/docs/phishing-credential-harvesting-and-beyond/10-introduction/</guid><description>&lt;p&gt;Setting the stage for things to come.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;We are going to setup phishing infrastructure.&lt;/li&gt;
 &lt;li&gt;Our infrastructure will allow us to:
